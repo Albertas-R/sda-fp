@@ -1,0 +1,57 @@
+/* <ul> */
+.product_list {
+  /* background-color: #fff9db; */
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 5.6rem 5.6rem; */
+  column-gap: 1.6rem;
+  row-gap: 1.6rem;
+
+  /* display: flex; */
+  /* justify-content: space-between; */
+
+  /* border: 1px solid lightseagreen; */
+}
+.product_list_li {
+  list-style: none;
+  padding: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  border: 1px solid lightcoral;
+}
+.product_list_li_img {
+  /* margin-bottom: 0.8rem; */
+  border: 1px solid grey;
+}
+
+.product_title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.product_price {
+  font-size: 1.8rem;
+}
+
+.product_btn {
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 0.8rem;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 4px;
+}
+
+/*
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/

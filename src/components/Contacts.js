@@ -6,7 +6,7 @@ function Contacts() {
   const { contacts, contacts_container, contacts_mob, contacts_email } = styles;
 
   return (
-    <footer className={contacts}>
+    <footer className={contacts} id="contacts">
       <div className={contacts_container}>
         <a className={contacts_mob} href="tel:+37068605132">
           +370 686 05132

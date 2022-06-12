@@ -1,9 +1,8 @@
-## SDA Final project
+### SDA Final project
 
 ## puslapiai
 
-- pagrindinis - shop
-  produktu sarasas (nuoroda i produkto puslapi, jo image, title, price, add buttonas)
+- pagrindinis - shop produktu sarasas (nuoroda i produkto puslapi, jo image, title, price, add buttonas)
 - produkto puslapis (produkto image, pavadinimas, aprasymas, kaina, add buttonas)
 - krepselio puslapis (panasus i produktu sarasa, bet turi rodyti amount, o ne add buttona; nuoroda i apmokejimo forma)
 - apmokejimo forma (vardas, adresas, telefonas, emailas, korteles duomenys visi su logiska validacija)
@@ -27,6 +26,7 @@
 - paieska produktu (arba filtras produktu puslapyje)
 
 produktu duomenys https://dummyjson.com/products nebutina visu rodyt
+
 
 # Getting Started with Create React App
 

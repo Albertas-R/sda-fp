@@ -1,5 +1,5 @@
 /**************************/
-/* HERO SECTION */
+/* SHOP SECTION */
 /**************************/
 
 .shop {
@@ -16,10 +16,7 @@
   align-items: flex-start;
   gap: 1rem; */
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.4rem;
-
+  background-color: white;
   border: 1px solid orangered;
 }
 

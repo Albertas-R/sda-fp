@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Header.module.css";
 
@@ -8,21 +9,26 @@ function Header() {
   return (
     <header className={header}>
       <div className={header_container}>
-        <a className={logo} href="#">
+        <Link to="/" className={logo}>
           Logo
-        </a>
+        </Link>
 
         <nav className={main_nav}>
           <ul className={main_nav_list}>
             <li>
-              <a className={main_nav_link} href="#">
+              <Link to="/" className={main_nav_link}>
                 Shop
-              </a>
+              </Link>
             </li>
             <li>
-              <a className={main_nav_link} href="#">
-                Kontaktai
-              </a>
+              <Link to="/contacts" className={main_nav_link}>
+                Contacts
+              </Link>
+            </li>
+            <li>
+              <Link to="/cart" className={main_nav_link}>
+                Cart
+              </Link>
             </li>
           </ul>
         </nav>
