@@ -1,6 +1,6 @@
 ## SDA Final project
 
-##puslapiai
+## puslapiai
 
 - pagrindinis - shop
   produktu sarasas (nuoroda i produkto puslapi, jo image, title, price, add buttonas)
@@ -8,7 +8,7 @@
 - krepselio puslapis (panasus i produktu sarasa, bet turi rodyti amount, o ne add buttona; nuoroda i apmokejimo forma)
 - apmokejimo forma (vardas, adresas, telefonas, emailas, korteles duomenys visi su logiska validacija)
 
-##turi buti headeris
+## turi buti headeris
 
 - navigacija i reikiamus puslapius
 - krepselis su pridetu produktu kiekiu
@@ -17,7 +17,7 @@
 - pridedami produktai saugomi localStorage
 - apmokant sekmingai krepselis isvalomas
 
-##optional
+## optional
 
 - pridedant preke gauti pranesima (toast)
 - uzsakant prekes gauti pranesima (toast)
