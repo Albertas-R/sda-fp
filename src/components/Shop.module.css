@@ -4,7 +4,8 @@
 
 .shop_container {
   max-width: 80rem;
-
+  min-height: calc(100vh - 9.6rem - 8.4rem);
+  
   margin: 0 auto;
   padding: 4.8rem;
 
@@ -13,7 +14,7 @@
   gap: 1rem; */
 
   background-color: white;
-  border: 1px solid orangered;
+  border: 1px solid lightskyblue;
 }
 
 .shop_txt {

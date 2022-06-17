@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Product.module.css";
 
@@ -15,10 +16,16 @@ function Product() {
     product_btn,
   } = styles;
 
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/cart");
+  };
+
   return (
     <div className={product}>
       <div className={image_container}>
-        <img className={product_image} src="http://via.placeholder.com/50x40" alt="" />
+        <img className={product_image} src="https://via.placeholder.com/50x40" alt="" />
       </div>
       <div className={description_container}>
         <p className={product_title}>Product Title</p>
@@ -32,7 +39,7 @@ function Product() {
         </p>
         <div className={price_container}>
           <p className={product_price}>100 €</p>
-          <button className={product_btn} type="button">
+          <button className={product_btn} type="button" onClick={handleClick}>
             Add to Cart
           </button>
         </div>

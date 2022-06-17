@@ -13,7 +13,7 @@
   align-items: center;
 
   background-color: white;
-  border: 1px solid lightseagreen;
+  /* border: 1px solid lightgray; */
 }
 
 .logo,
@@ -27,7 +27,7 @@
 
   /* height: 2.2rem; */
 
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
 }
 .logo:hover,
 .logo:active {
@@ -64,7 +64,7 @@ a.active {
   align-items: center;
   gap: 4.8rem;
 
-  border: 1px solid lightgreen;
+  /* border: 1px solid lightgreen; */
 }
 
 /* <a> element inside <li> */
@@ -80,7 +80,7 @@ a.active {
   color: var(--text);
   transition: all 0.3s;
 
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
 }
 
 .main_nav_link:hover,

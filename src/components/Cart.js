@@ -16,6 +16,7 @@ function Cart() {
     cart_amount_btns,
     cart_amount_add,
     cart_amount_min,
+    cart_total,
     cart_btn_pay,
   } = styles;
 
@@ -30,7 +31,7 @@ function Cart() {
       <ul className={cart_list}>
         <li className={cart_list_li}>
           <Link to="/product">
-            <img className={cart_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={cart_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={cart_title}>
             <p>Product 1 Title</p>
@@ -49,7 +50,7 @@ function Cart() {
 
         <li className={cart_list_li}>
           <Link to="/product">
-            <img className={cart_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={cart_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={cart_title}>
             <p>Product 2 Title</p>
@@ -68,7 +69,7 @@ function Cart() {
 
         <li className={cart_list_li}>
           <Link to="/product">
-            <img className={cart_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={cart_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={cart_title}>
             <p>Product 3 Title</p>
@@ -85,7 +86,7 @@ function Cart() {
           </div>
         </li>
       </ul>
-
+      <div className={cart_total}>Total: <strong>225 €</strong></div>
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
         Pay now
       </button>

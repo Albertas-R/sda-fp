@@ -12,7 +12,7 @@ function Footer() {
           Mob. phone
         </a>
         <a className={contacts_email} href="mailto:albertas.rinkevicius@gmail.com">
-          E-mail
+          Email
         </a>
       </div>
     </footer>

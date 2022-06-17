@@ -26,7 +26,7 @@ function ProductList() {
       <ul className={product_list} id="product_list">
         <li className={product_list_li}>
           <Link to="/product">
-            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={product_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={product_title}>
             <p>Product 1 Title</p>
@@ -39,7 +39,7 @@ function ProductList() {
 
         <li className={product_list_li}>
           <Link to="/product">
-            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={product_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={product_title}>
             <p>Product 2 Title</p>
@@ -52,7 +52,7 @@ function ProductList() {
 
         <li className={product_list_li}>
           <Link to="/product">
-            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={product_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={product_title}>
             <p>Product 3 Title</p>
@@ -65,7 +65,7 @@ function ProductList() {
 
         <li className={product_list_li}>
           <Link to="/product">
-            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+            <img className={product_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
           </Link>
           <Link to="/product" className={product_title}>
             <p>Product 4 Title</p>
