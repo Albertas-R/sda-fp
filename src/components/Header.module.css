@@ -22,7 +22,7 @@
   font-size: 2.4rem;
   font-weight: 500;
   text-decoration: none;
-  color: #333;
+  color: var(--text);
   transition: all 0.3s;
 
   /* height: 2.2rem; */
@@ -31,11 +31,16 @@
 }
 .logo:hover,
 .logo:active {
-  color: blue;
+  color: var(--hover);
 
   /* opacity: 0.5; */
 
   /* border: 1px solid red; */
+}
+
+a.active {
+  /* font-weight: 800; */
+  color: red;
 }
 
 /**************************/
@@ -53,7 +58,7 @@
   font-size: 1.8rem;
   font-weight: 500;
   list-style: none;
-  color: #333;
+  color: var(--text);
 
   display: flex;
   align-items: center;
@@ -72,7 +77,7 @@
 
   font-size: 1.8rem;
   font-weight: 500;
-  color: #333;
+  color: var(--text);
   transition: all 0.3s;
 
   border: 1px solid grey;
@@ -80,5 +85,5 @@
 
 .main_nav_link:hover,
 .main_nav_link:active {
-  color: blue;
+  color: var(--hover);
 }

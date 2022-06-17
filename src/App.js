@@ -3,19 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import './App.css';
 import Header from "./components/Header";
+// import Hero from "./components/Hero";
 import Shop from "./components/Shop";
-import Contacts from "./components/Contacts";
-// import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      {/* <Hero /> */}
       <Shop />
-      <Contacts />
-      {/* <Routes>
-        <Route path="*" element={<NotFound />} />
-      </Routes> */}
+      <Footer />
     </BrowserRouter>
   );
 }

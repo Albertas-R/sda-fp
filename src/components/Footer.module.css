@@ -27,7 +27,7 @@
 .contacts_mob:link,
 .contacts_mob:visited {
   text-decoration: none;
-  color: #333;
+  color: var(--text);
   cursor: pointer;
   transition: all 0.3s;
 
@@ -36,14 +36,14 @@
 
 .contacts_mob:hover,
 .contacts_mob:active {
-  color: blue;
+  color: var(--hover);
 }
 
 .contacts_email,
 .contacts_email:link,
 .contacts_email:visited {
   /* text-decoration: none; */
-  color: #333;
+  color: var(--text);
   transition: all 0.3s;
 
   /* border: 1px solid grey; */
@@ -51,7 +51,7 @@
 
 .contacts_email:hover,
 .contacts_email:active {
-  color: blue;
+  color: var(--hover);
 }
 
 /*

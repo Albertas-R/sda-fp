@@ -31,6 +31,13 @@
 .product_title {
   font-size: 2rem;
   font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s;
+}
+.product_title:hover,
+.product_title:active {
+  color: var(--hover);
 }
 
 .product_price {

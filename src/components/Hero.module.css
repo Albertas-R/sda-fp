@@ -1,15 +1,17 @@
 .hero {
-  background-color: lightgreen;
   text-align: center;
+  background-color: rgba(144, 238, 144, 0.2);
+  border: 1px solid lightgrey;
 }
 
 /* .hero_container {
   max-width: 80rem;
-
+  
   margin: 0 auto;
-  padding: 4.8rem;
-
-  border: 1px solid blue;
+  padding: 2.4rem;
+  
+  background-color: rgba(144, 238, 144, 0.2);
+  border: 1px solid lightgrey;
 } */
 
 .hero_txt {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import styles from "./Header.module.css";
 
@@ -9,26 +9,31 @@ function Header() {
   return (
     <header className={header}>
       <div className={header_container}>
-        <Link to="/" className={logo}>
-          Logo
-        </Link>
+        <NavLink to="/" className={logo}>
+          Home
+        </NavLink>
 
         <nav className={main_nav}>
           <ul className={main_nav_list}>
             <li>
-              <Link to="/" className={main_nav_link}>
+              <NavLink to="/" className={main_nav_link}>
                 Shop
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/contacts" className={main_nav_link}>
+              <NavLink to="/contacts" className={main_nav_link}>
                 Contacts
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/cart" className={main_nav_link}>
+              <NavLink to="/pay" className={main_nav_link}>
+                Pay
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/cart" className={main_nav_link}>
                 Cart
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import Hero from "./Hero";
+import Hero from "./Hero";
 import ProductList from "./ProductList";
 import Product from "./Product";
 import Cart from "./Cart";
@@ -17,11 +17,14 @@ function Shop() {
     <section className={shop} id="shop">
       <div className={shop_container}>
         <Routes>
-          {/* <Route path="/hero" element={<Hero />} /> */}
-          <Route path="/" element={<ProductList />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/pay" element={<Pay />} />
+          <Route path="/" element={<ProductList />}>
+            <Route index element={<Hero />} />
+          </Route>
+          {/* <Route path="hero" element={<Hero />} /> */}
+          <Route path="product" element={<Product />} />
+          <Route path="product/:productId" element={<Product />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="pay" element={<Pay />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

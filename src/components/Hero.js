@@ -7,9 +7,9 @@ function Hero() {
 
   return (
     <div className={hero}>
-      {/* <div className={hero_container}> */}
-        <p className={hero_txt}>hero page</p>
-      {/* </div> */}
+      <div className={hero_container}>
+        <p className={hero_txt}>Hero page</p>
+      </div>
     </div>
   );
 }

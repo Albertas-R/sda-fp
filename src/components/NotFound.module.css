@@ -8,6 +8,10 @@
   margin: 0 auto;
   padding: 4.8rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border: 1px solid blue;
 }
 

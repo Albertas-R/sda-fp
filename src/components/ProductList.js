@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import Hero from "./Hero";
 
@@ -17,16 +17,20 @@ function ProductList() {
 
   let navigate = useNavigate();
 
-  function handleClick() {
-    navigate("/product");
-  }
+  const handleClick = () => {
+    navigate("/cart");
+  };
 
   return (
     <>
       <ul className={product_list} id="product_list">
         <li className={product_list_li}>
-          <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
-          <p className={product_title}>Product 1 Title</p>
+          <Link to="/product">
+            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+          </Link>
+          <Link to="/product" className={product_title}>
+            <p>Product 1 Title</p>
+          </Link>
           <p className={product_price}>100 €</p>
           <button className={product_btn} type="button" onClick={handleClick}>
             Add to Cart
@@ -34,8 +38,12 @@ function ProductList() {
         </li>
 
         <li className={product_list_li}>
-          <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
-          <p className={product_title}>Product 2 Title</p>
+          <Link to="/product">
+            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+          </Link>
+          <Link to="/product" className={product_title}>
+            <p>Product 2 Title</p>
+          </Link>
           <p className={product_price}>50 €</p>
           <button className={product_btn} type="button" onClick={handleClick}>
             Add to Cart
@@ -43,8 +51,12 @@ function ProductList() {
         </li>
 
         <li className={product_list_li}>
-          <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
-          <p className={product_title}>Product 3 Title</p>
+          <Link to="/product">
+            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+          </Link>
+          <Link to="/product" className={product_title}>
+            <p>Product 3 Title</p>
+          </Link>
           <p className={product_price}>75 €</p>
           <button className={product_btn} type="button" onClick={handleClick}>
             Add to Cart
@@ -52,8 +64,12 @@ function ProductList() {
         </li>
 
         <li className={product_list_li}>
-          <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
-          <p className={product_title}>Product 4 Title</p>
+          <Link to="/product">
+            <img className={product_list_li_img} src="http://via.placeholder.com/50x40" alt="" />
+          </Link>
+          <Link to="/product" className={product_title}>
+            <p>Product 4 Title</p>
+          </Link>
           <p className={product_price}>200 €</p>
           <button className={product_btn} type="button" onClick={handleClick}>
             Add to Cart
