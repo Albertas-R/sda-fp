@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 
 // import Hero from "./Hero";
 
@@ -23,6 +23,7 @@ function ProductList() {
 
   return (
     <>
+      <Outlet />
       <ul className={product_list} id="product_list">
         <li className={product_list_li}>
           <Link to="/product">

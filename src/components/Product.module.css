@@ -1,4 +1,6 @@
 .product {
+  padding: 4.8rem;
+
   display: grid;
   grid-template-columns: 1fr 2fr;
   /* grid-template-rows: 5.6rem 5.6rem; */

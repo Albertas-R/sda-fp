@@ -20,7 +20,6 @@ function Shop() {
           <Route path="/" element={<ProductList />}>
             <Route index element={<Hero />} />
           </Route>
-          {/* <Route path="hero" element={<Hero />} /> */}
           <Route path="product" element={<Product />} />
           <Route path="product/:productId" element={<Product />} />
           <Route path="cart" element={<Cart />} />
