@@ -67,7 +67,7 @@ function Pay() {
             required
           />
         </div>
-        <button className={pay_btn} type="button" onClick={handleClick}>
+        <button className={pay_btn} type="submit" onClick={handleClick}>
           Pay now
         </button>
       </form>

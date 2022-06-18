@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 
 import Hero from "./Hero";
@@ -15,11 +15,26 @@ function ProductList({ products }) {
     product_btn,
   } = styles;
 
-  let navigate = useNavigate();
+  const [cartItems, setCartItems] = useState([]);
 
-  const handleClick = () => {
-    navigate("/cart");
+  // let navigate = useNavigate();
+
+  const handleClick = (item) => {
+    // navigate("/cart");
+
+    localStorage.setItem(
+      "cartItem",
+      JSON.stringify({ title: item.title, image: item.images[0], price: item.price })
+    );
+
+    // setCartItems(JSON.parse(localStorage.getItem("cartItem")));
+
+    setCartItems(() => [...cartItems, JSON.parse(localStorage.getItem("cartItem"))]);
+
+    console.log(JSON.parse(localStorage.getItem("cartItem")));
   };
+  // console.log(products);
+  console.log(cartItems);
 
   return (
     <>
@@ -36,7 +51,7 @@ function ProductList({ products }) {
                 <p>{item.title}</p>
               </Link>
               <p className={product_price}>{item.price} €</p>
-              <button className={product_btn} type="button" onClick={handleClick}>
+              <button className={product_btn} type="button" onClick={() => handleClick(item)}>
                 Add to Cart
               </button>
             </li>

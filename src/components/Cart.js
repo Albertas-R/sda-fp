@@ -1,9 +1,9 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./Cart.module.css";
 
-function Cart() {
+function Cart(props) {
   const {
     cart,
     cart_list,
@@ -31,12 +31,12 @@ function Cart() {
       <ul className={cart_list}>
         <li className={cart_list_li}>
           <Link to="/product">
-            <img className={cart_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
+            <img className={cart_list_li_img} src={props.image} alt="" />
           </Link>
           <Link to="/product" className={cart_title}>
-            <p>Product 1 Title</p>
+            <p>{props.title}</p>
           </Link>
-          <p className={cart_price}>100 €</p>
+          <p className={cart_price}>{props.price} €</p>
           <div className={cart_amount}>
             <div className={cart_amount_nr}>
               <p>1</p>
@@ -86,7 +86,9 @@ function Cart() {
           </div>
         </li>
       </ul>
-      <div className={cart_total}>Total: <strong>225 €</strong></div>
+      <div className={cart_total}>
+        Total: <strong>225 €</strong>
+      </div>
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
         Pay now
       </button>

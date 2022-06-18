@@ -19,7 +19,8 @@ function Product({ products }) {
   let navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/cart");
+    // navigate("/cart");
+    console.log("Add to Cart button clicked from product page");
   };
 
   let { productId } = useParams();

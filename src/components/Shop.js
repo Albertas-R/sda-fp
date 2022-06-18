@@ -30,7 +30,7 @@ function Shop() {
           <Route path="/" element={<ProductList products={products} />}>
             <Route index element={<Hero />} />
           </Route>
-          <Route path="product" element={<Product products={products} />} />
+          {/* <Route path="product" element={<Product products={products} />} /> */}
           <Route path="product/:productId" element={<Product products={products} />} />
           <Route path="cart" element={<Cart />} />
           <Route path="pay" element={<Pay />} />
