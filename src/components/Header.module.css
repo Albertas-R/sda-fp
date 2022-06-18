@@ -38,11 +38,6 @@
   /* border: 1px solid red; */
 }
 
-a.active {
-  /* font-weight: 800; */
-  color: red;
-}
-
 /**************************/
 /* NAVIGATION */
 /**************************/
@@ -85,5 +80,11 @@ a.active {
 
 .main_nav_link:hover,
 .main_nav_link:active {
+  color: var(--hover);
+}
+
+.main_nav_link.active {
+  font-weight: 800;
+  text-decoration: underline;
   color: var(--hover);
 }

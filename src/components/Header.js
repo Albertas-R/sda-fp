@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 
 function Header() {
-  const { header, header_container, logo, main_nav, main_nav_list, main_nav_link } = styles;
+  const { header, header_container, logo, main_nav, main_nav_list, main_nav_link, active } = styles;
 
   return (
     <header className={header}>
@@ -16,26 +16,44 @@ function Header() {
         <nav className={main_nav}>
           <ul className={main_nav_list}>
             <li>
-              <NavLink to="/" className={main_nav_link}>
+              <NavLink
+                to="/"
+                className={(isActive) => {
+                  console.log({ isActive });
+                  return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
+                }}
+              >
                 Shop
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contacts" className={main_nav_link}>
+              <NavLink
+                to="/contacts"
+                className={(isActive) => {
+                  console.log({ isActive });
+                  return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
+                }}
+              >
                 Contacts
               </NavLink>
             </li>
             <li>
-              <NavLink to="/pay" className={main_nav_link}>
+              <NavLink
+                to="/pay"
+                className={(isActive) => {
+                  console.log({ isActive });
+                  return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
+                }}
+              >
                 Pay
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart" className={main_nav_link}>
+              {/* <NavLink to="/cart" className={main_nav_link}>
                 Cart
-              </NavLink>
+              </NavLink> */}
 
-              {/* <NavLink
+              <NavLink
                 to="/cart"
                 className={(isActive) => {
                   console.log({ isActive });
@@ -43,8 +61,7 @@ function Header() {
                 }}
               >
                 Cart
-              </NavLink> */}
-
+              </NavLink>
             </li>
           </ul>
         </nav>

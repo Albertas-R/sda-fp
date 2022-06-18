@@ -31,6 +31,9 @@
   cursor: pointer;
   transition: all 0.3s;
 
+  display: flex;
+  align-items: center;
+
   /* border: 1px solid grey; */
 }
 
@@ -45,6 +48,9 @@
   /* text-decoration: none; */
   color: var(--text);
   transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
 
   /* border: 1px solid grey; */
 }
