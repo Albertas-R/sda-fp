@@ -1,9 +1,12 @@
-import React from "react";
+import { React, useState } from "react";
 
 import styles from "./Pay.module.css";
 
 function Pay() {
   const { pay, pay_container, pay_form_group, pay_label, pay_input, pay_btn } = styles;
+
+  const [nameInput, setNameInput] = useState("");
+  // console.log(nameInput);
 
   const handleClick = () => {
     console.log("pay_btn clicked");
@@ -21,6 +24,8 @@ function Pay() {
             className={pay_input}
             id="name"
             type="text"
+            // value={nameInput}
+            // onChange={setNameInput(nameInput.target.value))}
             name="name"
             placeholder="Enter your name"
             required

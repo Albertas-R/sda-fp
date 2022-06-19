@@ -26,6 +26,9 @@ function Cart(props) {
     navigate("/pay");
   };
 
+  // const cartItems = JSON.parse(localStorage.getItem("cartItem"));
+  // console.log(cartItems);
+
   return (
     <div className={cart}>
       <ul className={cart_list}>

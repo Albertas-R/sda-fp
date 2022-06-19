@@ -32,7 +32,7 @@ function Shop() {
           </Route>
           {/* <Route path="product" element={<Product products={products} />} /> */}
           <Route path="product/:productId" element={<Product products={products} />} />
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<Cart products={products} />} />
           <Route path="pay" element={<Pay />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -15,12 +15,8 @@ function ProductList({ products }) {
     product_btn,
   } = styles;
 
-  const [cartItems, setCartItems] = useState([]);
-
-  // let navigate = useNavigate();
-
+  /*
   const handleClick = (item) => {
-    // navigate("/cart");
 
     localStorage.setItem(
       "cartItem",
@@ -33,8 +29,34 @@ function ProductList({ products }) {
 
     console.log(JSON.parse(localStorage.getItem("cartItem")));
   };
-  // console.log(products);
-  console.log(cartItems);
+  */
+
+  const handleClick = (item) => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const checkItem = cartItems.find((el) => el.id === item.id);
+
+    if (checkItem) {
+      checkItem.amount++;
+    } else {
+      cartItems.push({ id: item.id, amount: 1 });
+    }
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    console.log(cartItems);
+
+    // const addItem = (itemId) => {
+    //   const previousItem = items.find(({ id }) => id === itemId);
+
+    //   if (previousItem) {
+    //     previousItem.amount++;
+
+    //     return;
+    //   }
+
+    //   items.push({ id: itemId, amount: 1 });
+    // };
+  };
 
   return (
     <>

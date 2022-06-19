@@ -19,7 +19,7 @@ function Header() {
               <NavLink
                 to="/"
                 className={(isActive) => {
-                  console.log({ isActive });
+                  // console.log({ isActive });
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >
@@ -30,7 +30,6 @@ function Header() {
               <NavLink
                 to="/contacts"
                 className={(isActive) => {
-                  console.log({ isActive });
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >
@@ -41,7 +40,6 @@ function Header() {
               <NavLink
                 to="/pay"
                 className={(isActive) => {
-                  console.log({ isActive });
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >
@@ -49,14 +47,9 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              {/* <NavLink to="/cart" className={main_nav_link}>
-                Cart
-              </NavLink> */}
-
               <NavLink
                 to="/cart"
                 className={(isActive) => {
-                  console.log({ isActive });
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >
