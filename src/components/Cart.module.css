@@ -34,7 +34,7 @@
   align-items: center; */
 
   display: grid;
-  grid-template-columns: 15rem 1fr 5rem 10rem;
+  grid-template-columns: 15rem 1fr 10rem 10rem;
   align-items: center;
 
   column-gap: 1.6rem;
