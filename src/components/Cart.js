@@ -82,7 +82,7 @@ function Cart({ products }) {
               <p className={cart_price}>{el.price} €</p>
               <div className={cart_amount}>
                 <div className={cart_amount_nr}>
-                  <p>{el.amount} item</p>
+                  <p>{el.amount} {el.amount > 1 ? "items" : "item"  }</p>
                 </div>
                 <div className={cart_amount_btns}>
                   {/* <button className={cart_amount_add}>+</button>
