@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { CartIconMd, CartOutlineIconMd } from "./Icons";
+
 import styles from "./Header.module.css";
 
 function Header() {
@@ -53,6 +55,8 @@ function Header() {
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >
+                {/* <CartIconMd /> */}
+                <CartOutlineIconMd />
                 Cart
               </NavLink>
             </li>

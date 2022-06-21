@@ -1,55 +1,61 @@
 import React from "react";
 
-import CheckIcon from "@material-ui/icons/Check";
-import PhoneIcon from "@material-ui/icons/Phone";
-import MailIcon from "@material-ui/icons/Mail";
-import FacebookIcon from "@material-ui/icons/Facebook";
+// https://react-icons.github.io/react-icons
+// fa - Font Awesome
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+// import { FaShoppingCart } from "react-icons/fa";
 
-export function AboutCheckmark() {
+// md - Material Design icons
+import { MdShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
+
+export function PhoneIconFa() {
   const style = {
-    fontSize: "3rem",
-  };
-
-  return <CheckIcon style={style} />;
-}
-
-export function MainCheckmark() {
-  const style = {
-    fontSize: "2rem",
-    color: "var(--hover)",
-  };
-
-  return <CheckIcon style={style} />;
-}
-
-export function PhoneIconSvg() {
-  const style = {
-    fontSize: "2rem",
+    // fontSize: "2rem",
     marginRight: "0.8rem",
     verticalAlign: "middle",
   };
 
-  return <PhoneIcon style={style} />;
+  return <FaPhoneAlt style={style} />;
 }
 
-export function EmailIconSvg() {
+export function EmailIconFa() {
   const style = {
-    fontSize: "2rem",
+    // fontSize: "2rem",
     marginRight: "0.8rem",
     verticalAlign: "middle",
   };
 
-  return <MailIcon style={style} />;
+  return <FaEnvelope style={style} />;
 }
 
-export function FacebookIconSvg() {
+// export function CartIconRi() {
+//   const style = {
+//     fontSize: "2rem",
+//     marginRight: "0.8rem",
+//     verticalAlign: "middle",
+//   };
+
+//   return <FaShoppingCart style={style} />;
+// }
+export function CartIconMd() {
   const style = {
-    fontSize: "2rem",
-    marginRight: "0.8rem",
+    fontSize: "2.4rem",
+    marginRight: "0.4rem",
     verticalAlign: "middle",
   };
 
-  return <FacebookIcon style={style} />;
+  return <MdShoppingCart style={style} />;
+}
+export function CartOutlineIconMd() {
+  const style = {
+    fontSize: "2.4rem",
+    marginRight: "0.4rem",
+    verticalAlign: "middle",
+  };
+
+  return <MdOutlineShoppingCart style={style} />;
 }
 
 /*

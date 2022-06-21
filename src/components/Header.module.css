@@ -67,8 +67,11 @@
 .main_nav_link:link,
 .main_nav_link:visited {
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   /* padding: 16px 32px; */
+
+  display: flex;
+  align-items: center;
 
   font-size: 1.8rem;
   font-weight: 500;

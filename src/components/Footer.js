@@ -1,6 +1,7 @@
 import React from "react";
 
-import { PhoneIconSvg, EmailIconSvg } from "./Icons";
+import { PhoneIconSvg, EmailIconSvg } from "./MuiIcons";
+import { PhoneIconFa, EmailIconFa } from "./Icons";
 
 import styles from "./Footer.module.css";
 
@@ -11,11 +12,13 @@ function Footer() {
     <footer className={contacts} id="contacts">
       <div className={contacts_container}>
         <a className={contacts_mob} href="tel:+37068605132">
-          <PhoneIconSvg />
+          {/* <PhoneIconSvg /> */}
+          <PhoneIconFa />
           Mob. phone
         </a>
         <a className={contacts_email} href="mailto:albertas.rinkevicius@gmail.com">
-          <EmailIconSvg />
+          {/* <EmailIconSvg /> */}
+          <EmailIconFa />
           Email
         </a>
       </div>
