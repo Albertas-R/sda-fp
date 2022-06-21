@@ -27,17 +27,42 @@ function Cart({ products }) {
   };
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  console.log(cartItems);
+  // console.log("cartItems", cartItems);
 
-  // 1 variantas - vietoj filter -> reduce
-  // 2 variantas - map productsInCart ir ziuret koks amount
+  ////// 1 variantas - vietoj filter -> reduce
+  ////// 2 variantas - map productsInCart ir ziuret koks amount
+
   const productsInCart = products.filter((el) => {
     const isProductInCart = cartItems.some((x) => {
       return el.id === x.id;
     });
     return isProductInCart;
   });
-  // console.log(productsInCart);
+  console.log("productsInCart", productsInCart);
+
+  let total = 0;
+  cartItems.forEach((cartItem) => {
+    // console.log(carItem);
+
+    productsInCart.forEach((product) => {
+      // console.log(product);
+      if (cartItem.id === product.id) {
+        total += product.price * cartItem.amount;
+      }
+    });
+  });
+  // console.log(total);
+
+  productsInCart.forEach((product) => {
+    // console.log(product);
+
+    cartItems.forEach((item) => {
+      // console.log(item.amount);
+      if (product.id === item.id) {
+        product.amount = item.amount;
+      }
+    });
+  });
 
   return (
     <div className={cart}>
@@ -55,7 +80,7 @@ function Cart({ products }) {
               <p className={cart_price}>{el.price} €</p>
               <div className={cart_amount}>
                 <div className={cart_amount_nr}>
-                  <p>"1"</p>
+                  <p>{el.amount}</p>
                 </div>
                 <div className={cart_amount_btns}>
                   <button className={cart_amount_add}>+</button>
@@ -86,7 +111,7 @@ function Cart({ products }) {
         </li> */}
       </ul>
       <div className={cart_total}>
-        Total: <strong>225 €</strong>
+        Total: <strong>{total} €</strong>
       </div>
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
         Pay now
