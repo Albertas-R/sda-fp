@@ -1,6 +1,8 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { PlusIconHi, MinusIconHi } from "./Icons";
+
 import styles from "./Cart.module.css";
 
 function Cart({ products }) {
@@ -80,11 +82,17 @@ function Cart({ products }) {
               <p className={cart_price}>{el.price} €</p>
               <div className={cart_amount}>
                 <div className={cart_amount_nr}>
-                  <p>{el.amount}</p>
+                  <p>{el.amount} item</p>
                 </div>
                 <div className={cart_amount_btns}>
-                  <button className={cart_amount_add}>+</button>
-                  <button className={cart_amount_min}>-</button>
+                  {/* <button className={cart_amount_add}>+</button>
+                  <button className={cart_amount_min}>-</button> */}
+                  <button className={cart_amount_add} onClick={() => console.log('btn add clicked')}>
+                    <PlusIconHi />
+                  </button>
+                  <button className={cart_amount_min} onClick={() => console.log('btn minus clicked')}>
+                    <MinusIconHi />
+                  </button>
                 </div>
               </div>
             </li>

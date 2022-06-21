@@ -10,11 +10,31 @@ import { FaEnvelope } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
+// hi - Heroicons
+import { HiPlusCircle } from "react-icons/hi";
+import { HiMinusCircle } from "react-icons/hi";
+
+export function PlusIconHi() {
+  const style = {
+    fontSize: "3rem",
+    color: "#37b24d"
+  };
+  
+  return <HiPlusCircle style={style} />;
+}
+export function MinusIconHi() {
+  const style = {
+    fontSize: "3rem",
+    color: "#f03e3e"
+  };
+
+  return <HiMinusCircle style={style} />;
+}
+
 export function PhoneIconFa() {
   const style = {
     // fontSize: "2rem",
     marginRight: "0.8rem",
-    verticalAlign: "middle",
   };
 
   return <FaPhoneAlt style={style} />;
@@ -24,7 +44,6 @@ export function EmailIconFa() {
   const style = {
     // fontSize: "2rem",
     marginRight: "0.8rem",
-    verticalAlign: "middle",
   };
 
   return <FaEnvelope style={style} />;
@@ -34,7 +53,6 @@ export function EmailIconFa() {
 //   const style = {
 //     fontSize: "2rem",
 //     marginRight: "0.8rem",
-//     verticalAlign: "middle",
 //   };
 
 //   return <FaShoppingCart style={style} />;
@@ -43,7 +61,6 @@ export function CartIconMd() {
   const style = {
     fontSize: "2.4rem",
     marginRight: "0.4rem",
-    verticalAlign: "middle",
   };
 
   return <MdShoppingCart style={style} />;
@@ -52,7 +69,6 @@ export function CartOutlineIconMd() {
   const style = {
     fontSize: "2.4rem",
     marginRight: "0.4rem",
-    verticalAlign: "middle",
   };
 
   return <MdOutlineShoppingCart style={style} />;
