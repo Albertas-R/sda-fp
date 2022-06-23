@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { PlusIconHi, MinusIconHi } from "./Icons";
@@ -18,7 +18,7 @@ function Cart({ products }) {
     cart_amount_btns,
     cart_amount_add,
     cart_amount_min,
-    cart_total,
+    cart_total_price,
     cart_btn_pay,
   } = styles;
 
@@ -29,42 +29,50 @@ function Cart({ products }) {
   };
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  // console.log("cartItems", cartItems);
 
   ////// 1 variantas - vietoj filter -> reduce
   ////// 2 variantas - map productsInCart ir ziuret koks amount
 
-  const productsInCart = products.filter((el) => {
-    const isProductInCart = cartItems.some((x) => {
-      return el.id === x.id;
+  const productsInCart = products.filter((product) => {
+    const isProductInCart = cartItems.some((item) => {
+      return product.id === item.id;
     });
     return isProductInCart;
   });
-  console.log("productsInCart", productsInCart);
+  console.log("productsInCart ----------", productsInCart);
 
-  let total = 0;
-  cartItems.forEach((cartItem) => {
-    // console.log(carItem);
+  let totalPrice = 0;
+  cartItems.forEach((item) => {
+    // console.log(item);
 
     productsInCart.forEach((product) => {
       // console.log(product);
-      if (cartItem.id === product.id) {
-        total += product.price * cartItem.amount;
-      }
-    });
-  });
-  // console.log(total);
-
-  productsInCart.forEach((product) => {
-    // console.log(product);
-
-    cartItems.forEach((item) => {
-      // console.log(item.amount);
-      if (product.id === item.id) {
+      if (item.id === product.id) {
+        totalPrice += product.price * item.amount;
         product.amount = item.amount;
       }
     });
   });
+  // console.log(totalPrice);
+
+  const [cartItemsState, setCartItemsState] = useState(cartItems);
+
+  // el ----> productsInCart
+  const handleCartAmountAdd = (el) => {
+    console.log("----- btn + clicked");
+    console.log(el);
+    el.amount++;
+    setCartItemsState(el.amount++);
+    console.log("---------- cartItemsState", cartItemsState);
+
+    cartItems.forEach((item) => {
+      if (item.id === el.id) {
+        item.amount++;
+      }
+    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+  console.log("cartItems ---------------", cartItems);
 
   return (
     <div className={cart}>
@@ -82,15 +90,17 @@ function Cart({ products }) {
               <p className={cart_price}>{el.price} €</p>
               <div className={cart_amount}>
                 <div className={cart_amount_nr}>
-                  <p>{el.amount} {el.amount > 1 ? "items" : "item"  }</p>
+                  <p>
+                    {el.amount} {el.amount > 1 ? "items" : "item"}
+                  </p>
                 </div>
                 <div className={cart_amount_btns}>
                   {/* <button className={cart_amount_add}>+</button>
                   <button className={cart_amount_min}>-</button> */}
-                  <button className={cart_amount_add} onClick={() => console.log('btn add clicked')}>
+                  <button className={cart_amount_add} onClick={() => handleCartAmountAdd(el)}>
                     <PlusIconHi />
                   </button>
-                  <button className={cart_amount_min} onClick={() => console.log('btn minus clicked')}>
+                  <button className={cart_amount_min} onClick={() => console.log("btn - clicked")}>
                     <MinusIconHi />
                   </button>
                 </div>
@@ -98,28 +108,9 @@ function Cart({ products }) {
             </li>
           );
         })}
-
-        {/* <li className={cart_list_li}>
-          <Link to="/product">
-            <img className={cart_list_li_img} src="https://via.placeholder.com/50x40" alt="" />
-          </Link>
-          <Link to="/product" className={cart_title}>
-            <p>Product 1 Title</p>
-          </Link>
-          <p className={cart_price}>50 €</p>
-          <div className={cart_amount}>
-            <div className={cart_amount_nr}>
-              <p>1</p>
-            </div>
-            <div className={cart_amount_btns}>
-              <button className={cart_amount_add}>+</button>
-              <button className={cart_amount_min}>-</button>
-            </div>
-          </div>
-        </li> */}
       </ul>
-      <div className={cart_total}>
-        Total: <strong>{total} €</strong>
+      <div className={cart_total_price}>
+        Total Price: <strong>{totalPrice} €</strong>
       </div>
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
         Pay now

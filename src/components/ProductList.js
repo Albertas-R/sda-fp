@@ -65,20 +65,20 @@ function ProductList({ products }) {
       <Hero />
       {/* <Outlet /> */}
       <ul className={product_list} id="product_list">
-        {products.map((item) => {
+        {products.map((product) => {
           return (
-            <li className={product_list_li} key={item.id}>
+            <li className={product_list_li} key={product.id}>
               <div className={product_img_box}>
-                <Link to={`/product/${item.id}`}>
-                  <img className={product_list_li_img} src={item.images[0]} alt="" />
+                <Link to={`/product/${product.id}`}>
+                  <img className={product_list_li_img} src={product.images[0]} alt="" />
                 </Link>
               </div>
               <div className={product_info_box}>
-                <Link to={`/product/${item.id}`} className={product_title}>
-                  <p>{item.title}</p>
+                <Link to={`/product/${product.id}`} className={product_title}>
+                  <p>{product.title}</p>
                 </Link>
-                <p className={product_price}>{item.price} €</p>
-                <button className={product_btn} type="button" onClick={() => handleClick(item)}>
+                <p className={product_price}>{product.price} €</p>
+                <button className={product_btn} type="button" onClick={() => handleClick(product)}>
                   Add to Cart
                 </button>
               </div>
