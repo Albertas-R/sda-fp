@@ -2,6 +2,7 @@
 .product_list {
   /* background-color: #fff9db; */
   padding: 4.8rem;
+  padding-top: 0;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -24,7 +25,13 @@
   justify-content: space-between;
   row-gap: 1.2rem;
 
+  transform: translateZ(0);
+  transition: transform 0.3s ease-out;
+
   border: 1px solid #adb5bd;
+}
+.product_card:hover {
+  transform: scale(1.05);
 }
 
 .product_img_box {
@@ -74,6 +81,18 @@
   background-color: lightgreen;
   border: none;
   border-radius: 4px;
+}
+
+.product_search {
+  font-family: inherit;
+  font-size: 1.6rem;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: block;
+  padding: 0.4rem 0.8rem;
+  margin: 2.4rem auto;
+  outline: none;
+  width: 24rem;
 }
 
 /*
