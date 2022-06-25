@@ -1,89 +1,20 @@
-import { React, useState } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { React } from "react";
 
 import Hero from "./Hero";
+import ProductCard from "./ProductCard";
 
 import styles from "./ProductList.module.css";
 
 function ProductList({ products }) {
-  const {
-    product_list,
-    product_img_box,
-    product_info_box,
-    product_list_li,
-    product_list_li_img,
-    product_title,
-    product_price,
-    product_btn,
-  } = styles;
-
-  /*
-  const handleClick = (item) => {
-
-    localStorage.setItem(
-      "cartItem",
-      JSON.stringify({ title: item.title, image: item.images[0], price: item.price })
-    );
-
-    // setCartItems(JSON.parse(localStorage.getItem("cartItem")));
-
-    setCartItems(() => [...cartItems, JSON.parse(localStorage.getItem("cartItem"))]);
-
-    console.log(JSON.parse(localStorage.getItem("cartItem")));
-  };
-  */
-
-  const handleClick = (item) => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-    const checkItem = cartItems.find((el) => el.id === item.id);
-
-    if (checkItem) {
-      checkItem.amount++;
-    } else {
-      cartItems.push({ id: item.id, amount: 1 });
-    }
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    console.log(cartItems);
-
-    // const addItem = (itemId) => {
-    //   const previousItem = items.find(({ id }) => id === itemId);
-
-    //   if (previousItem) {
-    //     previousItem.amount++;
-
-    //     return;
-    //   }
-
-    //   items.push({ id: itemId, amount: 1 });
-    // };
-  };
+  const { product_list } = styles;
 
   return (
     <>
       <Hero />
-      {/* <Outlet /> */}
+
       <ul className={product_list} id="product_list">
         {products.map((product) => {
-          return (
-            <li className={product_list_li} key={product.id}>
-              <div className={product_img_box}>
-                <Link to={`/product/${product.id}`}>
-                  <img className={product_list_li_img} src={product.images[0]} alt="" />
-                </Link>
-              </div>
-              <div className={product_info_box}>
-                <Link to={`/product/${product.id}`} className={product_title}>
-                  <p>{product.title}</p>
-                </Link>
-                <p className={product_price}>{product.price} €</p>
-                <button className={product_btn} type="button" onClick={() => handleClick(product)}>
-                  Add to Cart
-                </button>
-              </div>
-            </li>
-          );
+          return <ProductCard product={product} key={product.id} />;
         })}
       </ul>
     </>

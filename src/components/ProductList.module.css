@@ -15,7 +15,7 @@
   /* border: 1px solid lightseagreen; */
 }
 
-.product_list_li {
+.product_card {
   list-style: none;
   padding: 0.8rem;
 
@@ -40,7 +40,7 @@
   gap: 0.8rem;
 }
 
-.product_list_li_img {
+.product_card_img {
   max-width: 100%;
   height: 100%;
   /* object-fit: cover; */

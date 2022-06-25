@@ -59,19 +59,43 @@ function Cart({ products }) {
 
   // el ----> productsInCart
   const handleCartAmountAdd = (el) => {
-    console.log("----- btn + clicked");
-    console.log(el);
-    el.amount++;
-    setCartItemsState(el.amount++);
-    console.log("---------- cartItemsState", cartItemsState);
+    console.log(`----- btn ADD id:${el.id} clicked`);
+    // console.log(el);
 
     cartItems.forEach((item) => {
-      if (item.id === el.id) {
-        item.amount++;
+      if (el.id === item.id) {
+        el.amount++;
+        // item.amount++;
+        setCartItemsState(item.amount++);
       }
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
+  // console.log("cartItems ---------------", cartItems);
+
+  const handleCartAmountMinus = (el) => {
+    console.log(`----- btn MINUS id:${el.id} clicked`);
+    console.log(el);
+    /*
+    if (el.amount >= 1) {
+      el.amount--;
+      setCartItemsState(el.amount--);
+    } else if ((el.amount = 0)) {
+      // how remove object?
+    }
+    console.log("---------- cartItemsState", cartItemsState);
+
+    cartItems.forEach((item) => {
+      if (item.id === el.id && item.amount >= 1) {
+        item.amount--;
+      } else if ((item.amount = 0)) {
+        // how remove object?
+      }
+    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    */
+  };
+
   console.log("cartItems ---------------", cartItems);
 
   return (
@@ -100,7 +124,7 @@ function Cart({ products }) {
                   <button className={cart_amount_add} onClick={() => handleCartAmountAdd(el)}>
                     <PlusIconHi />
                   </button>
-                  <button className={cart_amount_min} onClick={() => console.log("btn - clicked")}>
+                  <button className={cart_amount_min} onClick={() => handleCartAmountMinus(el)}>
                     <MinusIconHi />
                   </button>
                 </div>

@@ -28,7 +28,7 @@ function Shop() {
       <div className={shop_container}>
         <Routes>
           <Route path="/" element={<ProductList products={products} />}>
-            <Route index element={<Hero />} />
+            {/* <Route index element={<Hero />} /> */}
           </Route>
           {/* <Route path="product" element={<Product products={products} />} /> */}
           <Route path="product/:productId" element={<Product products={products} />} />
