@@ -57,7 +57,6 @@ function Cart({ products }) {
 
   const [cartItemsState, setCartItemsState] = useState(cartItems);
 
-  // el ----> productsInCart
   const handleCartAmountAdd = (product) => {
     console.log(`----- btn ADD id:${product.id} clicked`);
     // console.log(product);
@@ -75,9 +74,10 @@ function Cart({ products }) {
   };
   // console.log("cartItems ---------------", cartItems);
 
+  // product ----> productsInCart
   const handleCartAmountMinus = (product) => {
     console.log(`----- btn MINUS id:${product.id} clicked`);
-    // console.log(product);
+    console.log(product);
 
     cartItems.forEach((item) => {
       if (product.id === item.id) {
@@ -89,6 +89,18 @@ function Cart({ products }) {
       }
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    if (product.amount === 0) {
+      const removeProduct = (productId) => {
+        const index = cartItems.findIndex((item) => item.id === productId);
+
+        if (index > -1) {
+          cartItems.splice(index, 1);
+        }
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      };
+      removeProduct(product.id);
+    }
   };
 
   console.log("cartItems ---------------", cartItems);
