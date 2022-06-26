@@ -48,8 +48,8 @@ function Cart({ products }) {
     productsInCart.forEach((product) => {
       // console.log(product);
       if (item.id === product.id) {
-        totalPrice += product.price * item.amount;
         product.amount = item.amount;
+        totalPrice += product.price * item.amount;
       }
     });
   });
@@ -65,8 +65,10 @@ function Cart({ products }) {
     cartItems.forEach((item) => {
       if (el.id === item.id) {
         el.amount++;
+
+        // console.log(item);
         // item.amount++;
-        setCartItemsState(item.amount++);
+        setCartItemsState({ ...item, amount: item.amount++ });
       }
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -75,25 +77,18 @@ function Cart({ products }) {
 
   const handleCartAmountMinus = (el) => {
     console.log(`----- btn MINUS id:${el.id} clicked`);
-    console.log(el);
-    /*
-    if (el.amount >= 1) {
-      el.amount--;
-      setCartItemsState(el.amount--);
-    } else if ((el.amount = 0)) {
-      // how remove object?
-    }
-    console.log("---------- cartItemsState", cartItemsState);
+    // console.log(el);
 
     cartItems.forEach((item) => {
-      if (item.id === el.id && item.amount >= 1) {
-        item.amount--;
-      } else if ((item.amount = 0)) {
-        // how remove object?
+      if (el.id === item.id) {
+        el.amount--;
+        
+        // console.log(item);
+        // item.amount--;
+        setCartItemsState({ ...item, amount: item.amount-- });
       }
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    */
   };
 
   console.log("cartItems ---------------", cartItems);
