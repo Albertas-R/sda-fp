@@ -77,7 +77,7 @@ function Cart({ products }) {
   // product ----> productsInCart
   const handleCartAmountMinus = (product) => {
     console.log(`----- btn MINUS id:${product.id} clicked`);
-    console.log(product);
+    // console.log(product);
 
     cartItems.forEach((item) => {
       if (product.id === item.id) {
