@@ -81,6 +81,11 @@
   background-color: lightgreen;
   border: none;
   border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.product_btn:hover,
+.product_btn:active {
+  background-color: var(--btn-hover);
 }
 
 .product_search {

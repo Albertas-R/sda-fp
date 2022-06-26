@@ -13,6 +13,8 @@
   --text: #333;
   --text2: #555;
   --hover: orangered;
+  --btn: #73be73;
+  --btn-hover: #73be73;
 }
 
 * {
