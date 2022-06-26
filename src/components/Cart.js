@@ -58,13 +58,13 @@ function Cart({ products }) {
   const [cartItemsState, setCartItemsState] = useState(cartItems);
 
   // el ----> productsInCart
-  const handleCartAmountAdd = (el) => {
-    console.log(`----- btn ADD id:${el.id} clicked`);
-    // console.log(el);
+  const handleCartAmountAdd = (product) => {
+    console.log(`----- btn ADD id:${product.id} clicked`);
+    // console.log(product);
 
     cartItems.forEach((item) => {
-      if (el.id === item.id) {
-        el.amount++;
+      if (product.id === item.id) {
+        product.amount++;
 
         // console.log(item);
         // item.amount++;
@@ -75,14 +75,14 @@ function Cart({ products }) {
   };
   // console.log("cartItems ---------------", cartItems);
 
-  const handleCartAmountMinus = (el) => {
-    console.log(`----- btn MINUS id:${el.id} clicked`);
-    // console.log(el);
+  const handleCartAmountMinus = (product) => {
+    console.log(`----- btn MINUS id:${product.id} clicked`);
+    // console.log(product);
 
     cartItems.forEach((item) => {
-      if (el.id === item.id) {
-        el.amount--;
-        
+      if (product.id === item.id) {
+        product.amount--;
+
         // console.log(item);
         // item.amount--;
         setCartItemsState({ ...item, amount: item.amount-- });
@@ -96,30 +96,33 @@ function Cart({ products }) {
   return (
     <div className={cart}>
       <ul className={cart_list}>
-        {productsInCart.map((el) => {
-          // console.log(el);
+        {productsInCart.map((product) => {
+          // console.log(product);
           return (
-            <li className={cart_list_li} key={el.id}>
+            <li className={cart_list_li} key={product.id}>
               <Link to="/product">
-                <img className={cart_list_li_img} src={el.images[0]} alt="" />
+                <img className={cart_list_li_img} src={product.images[0]} alt="" />
               </Link>
               <Link to="/product" className={cart_title}>
-                <p>{el.title}</p>
+                <p>{product.title}</p>
               </Link>
-              <p className={cart_price}>{el.price} €</p>
+              <p className={cart_price}>{product.price} €</p>
               <div className={cart_amount}>
                 <div className={cart_amount_nr}>
                   <p>
-                    {el.amount} {el.amount > 1 ? "items" : "item"}
+                    {product.amount} {product.amount > 1 ? "items" : "item"}
                   </p>
                 </div>
                 <div className={cart_amount_btns}>
                   {/* <button className={cart_amount_add}>+</button>
                   <button className={cart_amount_min}>-</button> */}
-                  <button className={cart_amount_add} onClick={() => handleCartAmountAdd(el)}>
+                  <button className={cart_amount_add} onClick={() => handleCartAmountAdd(product)}>
                     <PlusIconHi />
                   </button>
-                  <button className={cart_amount_min} onClick={() => handleCartAmountMinus(el)}>
+                  <button
+                    className={cart_amount_min}
+                    onClick={() => handleCartAmountMinus(product)}
+                  >
                     <MinusIconHi />
                   </button>
                 </div>
