@@ -1,5 +1,7 @@
 import React from "react";
 
+import { HeroIconGi } from "./Icons";
+
 import styles from "./Hero.module.css";
 
 function Hero() {
@@ -8,7 +10,9 @@ function Hero() {
   return (
     <div className={hero}>
       <div className={hero_container}>
-        <p className={hero_txt}>Hero page</p>
+        <p className={hero_txt}>
+        <HeroIconGi />Hero page
+        </p>
       </div>
     </div>
   );

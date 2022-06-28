@@ -14,18 +14,21 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { HiPlusCircle } from "react-icons/hi";
 import { HiMinusCircle } from "react-icons/hi";
 
+// gi - Game Icons
+import { GiNinjaHeroicStance } from "react-icons/gi";
+
 export function PlusIconHi() {
   const style = {
     fontSize: "3rem",
-    color: "#37b24d"
+    color: "#37b24d",
   };
-  
+
   return <HiPlusCircle style={style} />;
 }
 export function MinusIconHi() {
   const style = {
     fontSize: "3rem",
-    color: "#f03e3e"
+    color: "#f03e3e",
   };
 
   return <HiMinusCircle style={style} />;
@@ -72,6 +75,15 @@ export function CartOutlineIconMd() {
   };
 
   return <MdOutlineShoppingCart style={style} />;
+}
+
+export function HeroIconGi() {
+  const style = {
+    fontSize: "3.6rem",
+    color: "var(--text2)",
+  };
+
+  return <GiNinjaHeroicStance style={style} />;
 }
 
 /*
