@@ -25,6 +25,9 @@
   color: var(--text);
   transition: all 0.3s;
 
+  display: flex;
+  align-items: center;
+
   /* height: 2.2rem; */
 
   /* border: 1px solid lightgray; */

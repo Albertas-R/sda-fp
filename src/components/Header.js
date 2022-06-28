@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { CartIconMd, CartOutlineIconMd } from "./Icons";
+import { CartIconMd, CartOutlineIconMd, FingerprintIconMd } from "./Icons";
 
 import styles from "./Header.module.css";
 
@@ -12,6 +12,7 @@ function Header() {
     <header className={header}>
       <div className={header_container}>
         <NavLink to="/" className={logo}>
+          <FingerprintIconMd />
           Home
         </NavLink>
 

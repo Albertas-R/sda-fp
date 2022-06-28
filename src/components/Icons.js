@@ -9,6 +9,8 @@ import { FaEnvelope } from "react-icons/fa";
 // md - Material Design icons
 import { MdShoppingCart } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdFingerprint } from "react-icons/md";
+
 
 // hi - Heroicons
 import { HiPlusCircle } from "react-icons/hi";
@@ -73,8 +75,16 @@ export function CartOutlineIconMd() {
     fontSize: "2.4rem",
     marginRight: "0.4rem",
   };
-
+  
   return <MdOutlineShoppingCart style={style} />;
+}
+export function FingerprintIconMd() {
+  const style = {
+    fontSize: "3rem",
+    marginRight: "0.4rem",
+  };
+
+  return <MdFingerprint style={style} />;
 }
 
 export function HeroIconGi() {
