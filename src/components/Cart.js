@@ -19,6 +19,7 @@ function Cart({ products }) {
     cart_amount_add,
     cart_amount_min,
     cart_total_price,
+    cart_total_price_empty,
     cart_btn_pay,
   } = styles;
 
@@ -105,6 +106,28 @@ function Cart({ products }) {
 
   console.log("cartItems ---------------", cartItems);
 
+  const totalPriceEl = (
+    <>
+      {totalPrice > 0 ? (
+        <div className={cart_total_price}>
+          Total Price: <strong>{totalPrice} €</strong>
+        </div>
+      ) : (
+        <div className={cart_total_price_empty}>Cart is empty.</div>
+      )}
+    </>
+  );
+
+  const cartBtnPayEl = (
+    <>
+      {totalPrice > 0 ? (
+        <button className={cart_btn_pay} type="button" onClick={handleClick}>
+          Pay now
+        </button>
+      ) : null}
+    </>
+  );
+
   return (
     <div className={cart}>
       <ul className={cart_list}>
@@ -143,12 +166,14 @@ function Cart({ products }) {
           );
         })}
       </ul>
-      <div className={cart_total_price}>
+      {/* <div className={cart_total_price}>
         Total Price: <strong>{totalPrice} €</strong>
-      </div>
-      <button className={cart_btn_pay} type="button" onClick={handleClick}>
+      </div> */}
+      <>{totalPriceEl}</>
+      {/* <button className={cart_btn_pay} type="button" onClick={handleClick}>
         Pay now
-      </button>
+      </button> */}
+      <>{cartBtnPayEl}</>
     </div>
   );
 }

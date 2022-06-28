@@ -105,6 +105,11 @@
 
   align-self: flex-end;
 }
+.cart_total_price_empty {
+  font-size: 1.8rem;
+
+  align-self: center;
+}
 
 .cart_btn_pay {
   font-family: inherit;
