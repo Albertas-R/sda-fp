@@ -1,5 +1,5 @@
 .contacts {
-  background-color: lightgray;
+  background-color: #f1f3f5;
 }
 
 .contacts_container {
@@ -7,7 +7,7 @@
   /* height: 9.6rem; */
 
   margin: 0 auto;
-  padding: 3.2rem;
+  padding: 2.4rem;
 
   display: flex;
   justify-content: center;
@@ -21,6 +21,7 @@
 
   background-color: white;
   /* border: 1px solid lightslategray; */
+  border-top: 1px solid #ced4da;
 }
 
 .contacts_mob,

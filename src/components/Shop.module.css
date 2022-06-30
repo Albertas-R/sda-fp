@@ -1,12 +1,12 @@
 .shop {
-  background-color: #fff9db;
+  background-color: #fff4e6;
 }
 
 .shop_container {
   max-width: 80rem;
   /* header 96px */
   /* footer 18 + 32 + 32 = 82px */
-  min-height: calc(100vh - 9.6rem - 8.2rem);
+  min-height: calc(100vh - 8rem - 6.7rem);
   
   margin: 0 auto;
   /* padding: 4.8rem; */
@@ -16,7 +16,7 @@
   gap: 1rem; */
 
   background-color: white;
-  border: 1px solid lightskyblue;
+  /* border: 1px solid lightskyblue; */
 }
 
 .shop_txt {
