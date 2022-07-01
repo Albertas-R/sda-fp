@@ -18,31 +18,41 @@ function Product({ products }) {
 
   let navigate = useNavigate();
 
-  const handleClick = () => {
-    // navigate("/cart");
-    console.log("Add to Cart button clicked from product page");
-  };
-
   let { productId } = useParams();
   console.log(productId);
 
-  const item = products.find((el) => {
-    if (Number(productId) === el.id) return true;
+  const currentProduct = products.find((product) => {
+    if (Number(productId) === product.id) return true;
     return false;
   });
-  console.log(item);
+  console.log(currentProduct);
+
+  const handleClick = (currentProduct) => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const checkItem = cartItems.find((item) => item.id === currentProduct.id);
+
+    if (checkItem) {
+      checkItem.amount++;
+    } else {
+      cartItems.push({ id: currentProduct.id, amount: 1 });
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    console.log(cartItems);
+  };
 
   return (
     <div className={product}>
       <div className={image_container}>
-        <img className={product_image} src={item.images[0]} alt="" />
+        <img className={product_image} src={currentProduct.images[0]} alt="" />
       </div>
       <div className={description_container}>
-        <p className={product_title}>{item.title}</p>
-        <p className={product_description}>{item.description}</p>
+        <p className={product_title}>{currentProduct.title}</p>
+        <p className={product_description}>{currentProduct.description}</p>
         <div className={price_container}>
-          <p className={product_price}>{item.price} €</p>
-          <button className={product_btn} type="button" onClick={handleClick}>
+          <p className={product_price}>{currentProduct.price} €</p>
+          <button className={product_btn} type="button" onClick={() => handleClick(currentProduct)}>
             Add to Cart
           </button>
         </div>
