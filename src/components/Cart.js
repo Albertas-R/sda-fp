@@ -135,10 +135,10 @@ function Cart({ products }) {
           // console.log(product);
           return (
             <li className={cart_list_li} key={product.id}>
-              <Link to="/product">
+              <Link to={`/product/${product.id}`}>
                 <img className={cart_list_li_img} src={product.images[0]} alt="" />
               </Link>
-              <Link to="/product" className={cart_title}>
+              <Link to={`/product/${product.id}`} className={cart_title}>
                 <p>{product.title}</p>
               </Link>
               <p className={cart_price}>{product.price} €</p>
