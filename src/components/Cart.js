@@ -29,104 +29,81 @@ function Cart({ products }) {
     navigate("/pay");
   };
 
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-  ////// 1 variantas - vietoj filter -> reduce
-  ////// 2 variantas - map productsInCart ir ziuret koks amount
-
-  const productsInCart = products.filter((product) => {
-    const isProductInCart = cartItems.some((item) => {
-      return product.id === item.id;
-    });
-    return isProductInCart;
-  });
-  console.log("productsInCart ----------", productsInCart);
-
-  let totalPrice = 0;
-  cartItems.forEach((item) => {
-    // console.log(item);
-
-    productsInCart.forEach((product) => {
-      // console.log(product);
-      if (item.id === product.id) {
-        product.amount = item.amount;
-        totalPrice += product.price * item.amount;
-      }
-    });
-  });
-  // console.log(totalPrice);
-
-  const [cartItemsState, setCartItemsState] = useState(cartItems);
-
-  const handleCartAmountAdd = (product) => {
-    console.log(`----- btn ADD id:${product.id} clicked`);
-    // console.log(product);
-
-    cartItems.forEach((item) => {
-      if (product.id === item.id) {
-        product.amount++;
-
-        // console.log(item);
-        // item.amount++;
-        setCartItemsState({ ...item, amount: item.amount++ });
-      }
-    });
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  };
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
   // console.log("cartItems ---------------", cartItems);
 
-  // product ----> productsInCart
-  const handleCartAmountMinus = (product) => {
-    console.log(`----- btn MINUS id:${product.id} clicked`);
-    // console.log(product);
+  const productsInCart = cartItems.reduce((acc, currentCartItem) => {
+    const checkItem = products.find((product) => product.id === currentCartItem.id);
 
-    cartItems.forEach((item) => {
-      if (product.id === item.id) {
-        product.amount--;
-
-        // console.log(item);
-        // item.amount--;
-        setCartItemsState({ ...item, amount: item.amount-- });
-      }
-    });
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    if (product.amount === 0) {
-      const removeProduct = (productId) => {
-        const index = cartItems.findIndex((item) => item.id === productId);
-
-        if (index > -1) {
-          cartItems.splice(index, 1);
-        }
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-      };
-      removeProduct(product.id);
+    if (checkItem) {
+      const productWithAmount = { ...currentCartItem, ...checkItem };
+      acc.push(productWithAmount);
     }
+    return acc;
+  }, []);
+  // console.log("productsInCart ----------", productsInCart);
+
+  const totalPrice = productsInCart.reduce((acc, currentItem) => {
+    return acc + currentItem.price * currentItem.amount;
+  }, 0);
+
+  const handleCartAmountAdd = (productId) => {
+    setCartItems((prevState) => {
+      // Copy of previous state
+      // const newState = JSON.parse(JSON.stringify(prevState));
+      const newState = prevState.map((item) => ({ ...item }));
+
+      const checkItem = newState.find((item) => item.id === productId);
+
+      checkItem.amount++;
+
+      console.log("btn ADD", { newState, checkItem });
+
+      localStorage.setItem("cartItems", JSON.stringify(newState));
+
+      return newState;
+    });
   };
 
-  console.log("cartItems ---------------", cartItems);
+  const handleCartAmountMinus = (productId) => {
+    setCartItems((prevState) => {
+      // Copy of previous state
+      // const newState = JSON.parse(JSON.stringify(prevState));
+      const newState = prevState.map((item) => ({ ...item }));
 
-  const totalPriceEl = (
-    <>
-      {totalPrice > 0 ? (
-        <div className={cart_total_price}>
-          Total Price: <strong>{totalPrice} €</strong>
-        </div>
-      ) : (
-        <div className={cart_total_price_empty}>Cart is empty.</div>
-      )}
-    </>
-  );
+      const checkItemIndex = newState.findIndex((item) => item.id === productId);
 
-  const cartBtnPayEl = (
-    <>
-      {totalPrice > 0 ? (
-        <button className={cart_btn_pay} type="button" onClick={handleClick}>
-          Pay now
-        </button>
-      ) : null}
-    </>
-  );
+      const checkItem = newState[checkItemIndex];
+
+      if (checkItem.amount === 1) {
+        newState.splice(checkItemIndex, 1);
+      } else {
+        checkItem.amount--;
+      }
+
+      console.log("btn MINUS", { newState, checkItemIndex, checkItem });
+
+      localStorage.setItem("cartItems", JSON.stringify(newState));
+
+      return newState;
+    });
+  };
+
+  const totalPriceEl =
+    totalPrice > 0 ? (
+      <div className={cart_total_price}>
+        Total Price: <strong>{totalPrice} €</strong>
+      </div>
+    ) : (
+      <div className={cart_total_price_empty}>Cart is empty.</div>
+    );
+
+  const cartBtnPayEl =
+    totalPrice > 0 ? (
+      <button className={cart_btn_pay} type="button" onClick={handleClick}>
+        Pay now
+      </button>
+    ) : null;
 
   return (
     <div className={cart}>
@@ -151,12 +128,15 @@ function Cart({ products }) {
                 <div className={cart_amount_btns}>
                   {/* <button className={cart_amount_add}>+</button>
                   <button className={cart_amount_min}>-</button> */}
-                  <button className={cart_amount_add} onClick={() => handleCartAmountAdd(product)}>
+                  <button
+                    className={cart_amount_add}
+                    onClick={() => handleCartAmountAdd(product.id)}
+                  >
                     <PlusIconHi />
                   </button>
                   <button
                     className={cart_amount_min}
-                    onClick={() => handleCartAmountMinus(product)}
+                    onClick={() => handleCartAmountMinus(product.id)}
                   >
                     <MinusIconHi />
                   </button>

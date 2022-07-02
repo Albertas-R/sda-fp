@@ -28,7 +28,8 @@ function ProductCard({ product }) {
     }
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    console.log(cartItems);
+
+    console.log("----- cartItems from ProductCard", cartItems);
   };
 
   return (
