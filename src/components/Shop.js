@@ -13,15 +13,15 @@ import styles from "./Shop.module.css";
 function Shop() {
   const { shop, shop_container } = styles;
 
-  const [products, setProducts] = useState([]);
-
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((products) => setProducts(products.products))
       .catch((error) => console.log(error));
   }, []);
-  // console.log(products);
+
+  const [products, setProducts] = useState([]);
+  // console.log({ products });
 
   return (
     <section className={shop} id="shop">

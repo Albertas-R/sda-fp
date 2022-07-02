@@ -8,7 +8,7 @@ import { AscendingIconTb, DescendingIconTb } from "./Icons";
 import styles from "./ProductList.module.css";
 
 function ProductList({ products }) {
-  // console.log(products);
+  // console.log({ products });
 
   const {
     product_list,
@@ -24,19 +24,25 @@ function ProductList({ products }) {
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchField.toLowerCase())
   );
+  // console.log({ filteredProducts });
+
+  const [sort, setSort] = useState(filteredProducts);
+  console.log({ sort });
 
   const sortAscending = () => {
-    const sortedAscending = products.sort((a, b) =>
+    const productsSortedAscending = filteredProducts.sort((a, b) =>
       a.title.toUpperCase().localeCompare(b.title.toUpperCase())
     );
-    console.log({ sortedAscending });
+    setSort(productsSortedAscending);
+    console.log({ productsSortedAscending });
   };
 
   const sortDescending = () => {
-    const sortedDescending = products.sort((a, b) =>
+    const productsSortedDescending = filteredProducts.sort((a, b) =>
       b.title.toUpperCase().localeCompare(a.title.toUpperCase())
     );
-    console.log({ sortedDescending });
+    setSort(productsSortedDescending);
+    console.log({ productsSortedDescending });
   };
 
   return (
@@ -64,9 +70,14 @@ function ProductList({ products }) {
         {/* {products.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })} */}
+
         {filteredProducts.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}
+
+        {/* {sort.map((product) => {
+          return <ProductCard product={product} key={product.id} />;
+        })} */}
       </ul>
     </>
   );

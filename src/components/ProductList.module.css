@@ -126,6 +126,9 @@
   outline: none;
   cursor: pointer;
 }
+.product_filter_btn:hover {
+  background-color: white;
+}
 
 /*
 - Font sizes (px)
