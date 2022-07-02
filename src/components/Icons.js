@@ -11,13 +11,33 @@ import { MdShoppingCart } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdFingerprint } from "react-icons/md";
 
-
 // hi - Heroicons
 import { HiPlusCircle } from "react-icons/hi";
 import { HiMinusCircle } from "react-icons/hi";
 
 // gi - Game Icons
 import { GiNinjaHeroicStance } from "react-icons/gi";
+
+// tb -Tabler Icons
+import { TbSortAscendingLetters } from "react-icons/tb";
+import { TbSortDescendingLetters } from "react-icons/tb";
+
+export function AscendingIconTb() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#277d36",
+  };
+
+  return <TbSortAscendingLetters style={style} />;
+}
+export function DescendingIconTb() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#a82b2b",
+  };
+
+  return <TbSortDescendingLetters style={style} />;
+}
 
 export function PlusIconHi() {
   const style = {
@@ -75,7 +95,7 @@ export function CartOutlineIconMd() {
     fontSize: "2.4rem",
     marginRight: "0.4rem",
   };
-  
+
   return <MdOutlineShoppingCart style={style} />;
 }
 export function FingerprintIconMd() {
