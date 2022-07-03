@@ -7,6 +7,12 @@ import { AscendingIconTb, DescendingIconTb } from "./Icons";
 
 import styles from "./ProductList.module.css";
 
+const sortOptions = {
+  OFF: "off",
+  ASCENDING: "ascending",
+  DESCENDING: "descending",
+};
+
 function ProductList({ products }) {
   // console.log({ products });
 
@@ -21,28 +27,27 @@ function ProductList({ products }) {
   const [searchField, setSearchField] = useState("");
   // console.log(searchField);
 
+  const [sort, setSort] = useState(sortOptions.OFF);
+  // console.log({ sort });
+
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchField.toLowerCase())
   );
+
+  if (sort === sortOptions.ASCENDING) {
+    filteredProducts.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+  }
+  if (sort === sortOptions.DESCENDING) {
+    filteredProducts.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+  }
   // console.log({ filteredProducts });
 
-  const [sort, setSort] = useState(filteredProducts);
-  console.log({ sort });
-
   const sortAscending = () => {
-    const productsSortedAscending = filteredProducts.sort((a, b) =>
-      a.title.toUpperCase().localeCompare(b.title.toUpperCase())
-    );
-    setSort(productsSortedAscending);
-    console.log({ productsSortedAscending });
+    setSort(sortOptions.ASCENDING);
   };
 
   const sortDescending = () => {
-    const productsSortedDescending = filteredProducts.sort((a, b) =>
-      b.title.toUpperCase().localeCompare(a.title.toUpperCase())
-    );
-    setSort(productsSortedDescending);
-    console.log({ productsSortedDescending });
+    setSort(sortOptions.DESCENDING);
   };
 
   return (
