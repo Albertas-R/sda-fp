@@ -50,6 +50,11 @@
   border-radius: 4px;
 }
 
+.pay_form_error {
+  font-size: 1.6rem;
+  color: red;
+}
+
 /* input:focus-visible {
   border-color: red;
 } */
