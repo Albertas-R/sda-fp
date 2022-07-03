@@ -125,14 +125,14 @@
   font-family: inherit;
   font-size: 1.4rem;
   border: 1px solid grey;
-  background-color: #e9ecef;
+  background-color: white;
   border-radius: 4px;
   padding: 0.2rem;
   outline: none;
   cursor: pointer;
 }
 .product_filter_btn:hover {
-  background-color: white;
+  background-color: #e9ecef;
 }
 
 /*
