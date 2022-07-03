@@ -99,7 +99,12 @@
 .product_filter_container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
+}
+.sort_by_title_container,
+.sort_by_price_container {
+  display: flex;
+  gap: 0.4rem;
 }
 
 .product_search {

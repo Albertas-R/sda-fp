@@ -3,7 +3,14 @@ import { React, useState } from "react";
 import Hero from "./Hero";
 import ProductCard from "./ProductCard";
 
-import { AscendingIconTb, DescendingIconTb } from "./Icons";
+import {
+  AscendingIconBs,
+  DescendingIconBs,
+  NumberAscendingIconBs,
+  NumberDescendingIconBs,
+  AscendingIconTb,
+  DescendingIconTb,
+} from "./Icons";
 
 import styles from "./ProductList.module.css";
 
@@ -11,6 +18,8 @@ const sortOptions = {
   OFF: "off",
   ASCENDING: "ascending",
   DESCENDING: "descending",
+  PRICE_ASCENDING: "priceAscending",
+  PRICE_DESCENDING: "priceDescending",
 };
 
 function ProductList({ products }) {
@@ -20,6 +29,8 @@ function ProductList({ products }) {
     product_list,
     product_search_filter_container,
     product_filter_container,
+    sort_by_title_container,
+    sort_by_price_container,
     product_search,
     product_filter_btn,
   } = styles;
@@ -40,7 +51,13 @@ function ProductList({ products }) {
   if (sort === sortOptions.DESCENDING) {
     filteredProducts.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
   }
-  // console.log({ filteredProducts });
+  if (sort === sortOptions.PRICE_ASCENDING) {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  }
+  if (sort === sortOptions.PRICE_DESCENDING) {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  }
+  console.log({ filteredProducts });
 
   const sortAscending = () => {
     setSort(sortOptions.ASCENDING);
@@ -48,6 +65,14 @@ function ProductList({ products }) {
 
   const sortDescending = () => {
     setSort(sortOptions.DESCENDING);
+  };
+
+  const sortPriceAscending = () => {
+    setSort(sortOptions.PRICE_ASCENDING);
+  };
+
+  const sortPriceDescending = () => {
+    setSort(sortOptions.PRICE_DESCENDING);
   };
 
   return (
@@ -62,12 +87,25 @@ function ProductList({ products }) {
           className={product_search}
         />
         <div className={product_filter_container}>
-          <button className={product_filter_btn} onClick={sortAscending}>
-            <AscendingIconTb />
-          </button>
-          <button className={product_filter_btn} onClick={sortDescending}>
-            <DescendingIconTb />
-          </button>
+          <div className={sort_by_title_container}>
+            <button className={product_filter_btn} onClick={sortAscending}>
+              <AscendingIconBs />
+              {/* <AscendingIconTb /> */}
+            </button>
+            <button className={product_filter_btn} onClick={sortDescending}>
+              <DescendingIconBs />
+              {/* <DescendingIconTb /> */}
+            </button>
+          </div>
+
+          <div className={sort_by_price_container}>
+            <button className={product_filter_btn} onClick={sortPriceAscending}>
+              <NumberAscendingIconBs />
+            </button>
+            <button className={product_filter_btn} onClick={sortPriceDescending}>
+              <NumberDescendingIconBs />
+            </button>
+          </div>
         </div>
       </div>
 

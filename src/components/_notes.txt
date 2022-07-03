@@ -1,0 +1,70 @@
+
+----------------------------------------------------------------
+
+2022-07-03
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+</body>
+</html>
+
+----------------------------------------------------------------
+
+const body = document.querySelector('body');
+
+const usernameInput = document.createElement('input');
+usernameInput.type = 'text';
+usernameInput.name = 'username';
+usernameInput.placeholder = 'enter your username';
+
+const passwordInput = document.createElement('input');
+passwordInput.type = 'text';
+passwordInput.name = 'password';
+passwordInput.placeholder = 'enter your password';
+
+const emailInput = document.createElement('input');
+emailInput.type = 'email';
+emailInput.name = 'email';
+emailInput.placeholder = 'enter your email';
+
+const submitButton = document.createElement('button');
+submitButton.type = 'submit';
+submitButton.innerText = 'Register';
+
+const form = document.createElement('form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+//   const username = event.target.elements.username;
+  const { username, password, email } = event.target.elements;
+  
+  const usernamePattern = /^[a-zA-Z0-9\-]{1,25}$/;
+  const emailPattern = /[a-z0-9\-\_\.]+@[a-z0-9\-\_\.]+\.[a-z]+/;
+  
+  const hasCapitalLetter = /[A-Z]/;
+  const hasLowercaseLetter = /[a-z]/;
+  const hasANumber = /[0-9]/;
+  
+  const isPasswordValid =
+  hasCapitalLetter.test(password.value) &&
+  hasLowercaseLetter.test(password.value) &&
+  hasANumber.test(password.value);
+  
+  const isUsernameValid = usernamePattern.test(username.value);
+  
+  const isEmailValid = emailPattern.test(email.value);
+  
+  console.log(isUsernameValid, isPasswordValid, isEmailValid);     
+})
+
+
+form.append(usernameInput, passwordInput, emailInput, submitButton);
+body.append(form);

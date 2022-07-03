@@ -22,6 +22,45 @@ import { GiNinjaHeroicStance } from "react-icons/gi";
 import { TbSortAscendingLetters } from "react-icons/tb";
 import { TbSortDescendingLetters } from "react-icons/tb";
 
+// bs - Bootstrap Icons
+import { BsSortAlphaDown } from "react-icons/bs";
+import { BsSortAlphaDownAlt } from "react-icons/bs";
+import { BsSortNumericDown } from "react-icons/bs";
+import { BsSortNumericDownAlt } from "react-icons/bs";
+
+export function AscendingIconBs() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#277d36",
+  };
+
+  return <BsSortAlphaDown style={style} />;
+}
+export function DescendingIconBs() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#a82b2b",
+  };
+
+  return <BsSortAlphaDownAlt style={style} />;
+}
+export function NumberAscendingIconBs() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#277d36",
+  };
+
+  return <BsSortNumericDown style={style} />;
+}
+export function NumberDescendingIconBs() {
+  const style = {
+    fontSize: "2.4rem",
+    color: "#a82b2b",
+  };
+
+  return <BsSortNumericDownAlt style={style} />;
+}
+
 export function AscendingIconTb() {
   const style = {
     fontSize: "2.4rem",
