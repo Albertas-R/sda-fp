@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 import styles from "./Pay.module.css";
 
@@ -11,11 +11,17 @@ function Pay() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const [isNameError, setNameError] = useState(false);
-  const [isAddressError, setAddressError] = useState(false);
-
+  const [isNameError, setIsNameError] = useState(false);
   const [isNameTouched, setIsNameTouched] = useState(false);
+
+  const [isAddressError, setIsAddressError] = useState(false);
   const [isAddressTouched, setIsAddressTouched] = useState(false);
+
+  const [isPhoneError, setIsPhoneError] = useState(false);
+  const [isPhoneTouched, setIsPhoneTouched] = useState(false);
+
+  const [isEmailError, setIsEmailError] = useState(false);
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
 
   // console.log({ name, adress, phone, email });
 
@@ -25,49 +31,103 @@ function Pay() {
   };
 
   //////////////////////////////// Name Validation
+  console.log({ isNameError, isNameTouched });
+
   const nameValidation = (e) => {
     e.preventDefault();
-    // console.log(e);
+    console.log(e);
 
     setName(e.target.value);
 
-    const nameCheck = /^[a-zA-Z0-9\-–]{2,25}\s[a-zA-Z0-9\-–]{2,25}$/;
+    const nameCheck = /^[a-zA-Z0-9\-–.]{2,25}\s[a-zA-Z0-9\-–.]{2,25}$/;
     const isNameValid = nameCheck.test(e.target.value);
 
-    if (isNameValid === false) {
-      setNameError(true);
-    } else setNameError(false);
+    if (!isNameValid && isNameTouched) {
+      setIsNameError(true);
+    } else setIsNameError(false);
 
-    console.log({ isNameValid, temp: e.target.value });
+    console.log("----------", { isNameValid, console_NameInputValue: e.target.value });
   };
+
   const nameValidationOnBlur = (e) => {
     e.preventDefault();
-    // console.log(e);
-
+    console.log("Name input onBlur", e);
     setIsNameTouched(true);
   };
 
   //////////////////////////////// Address Validation
+  // console.log({ isAddressError, isAddressTouched });
+
   const addressValidation = (e) => {
     e.preventDefault();
-    // console.log(e);
+    console.log(e);
 
     setAddress(e.target.value);
 
-    const addressCheck = /^[a-zA-Z0-9\-–]{2,100}$/;
+    const addressCheck = /^[a-zA-Z0-9\-–_.\s]{2,150}$/;
     const isAddressValid = addressCheck.test(e.target.value);
 
-    if (isAddressValid === false) {
-      setAddressError(true);
-    } else setAddressError(false);
+    if (!isAddressValid && isAddressTouched) {
+      setIsAddressError(true);
+    } else setIsAddressError(false);
 
-    console.log({ isAddressValid, temp: e.target.value });
+    console.log("----------", { isAddressValid, console_AddressInputValue: e.target.value });
   };
+
   const addressValidationOnBlur = (e) => {
     e.preventDefault();
-    // console.log(e);
-
+    console.log("Address input onBlur", e);
     setIsAddressTouched(true);
+  };
+
+  //////////////////////////////// Phone Validation
+  // console.log({ isPhoneError, isPhoneTouched });
+
+  const phoneValidation = (e) => {
+    e.preventDefault();
+    console.log(e);
+
+    setPhone(e.target.value);
+
+    const phoneCheck = /^[+0-9\-\s]{5,12}$/;
+    const isPhoneValid = phoneCheck.test(e.target.value);
+
+    if (!isPhoneValid && isPhoneTouched) {
+      setIsPhoneError(true);
+    } else setIsPhoneError(false);
+
+    console.log("----------", { isPhoneValid, console_PhoneInputValue: e.target.value });
+  };
+
+  const phoneValidationOnBlur = (e) => {
+    e.preventDefault();
+    console.log("Phone input onBlur", e);
+    setIsPhoneTouched(true);
+  };
+
+  //////////////////////////////// Email Validation
+  // console.log({ isEmailError, isEmailTouched });
+
+  const emailValidation = (e) => {
+    e.preventDefault();
+    console.log(e);
+
+    setEmail(e.target.value);
+
+    const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
+    const isEmailValid = emailCheck.test(e.target.value);
+
+    if (!isEmailValid && isEmailTouched) {
+      setIsEmailError(true);
+    } else setIsEmailError(false);
+
+    console.log("----------", { isEmailValid, console_EmailInputValue: e.target.value });
+  };
+
+  const emailValidationOnBlur = (e) => {
+    e.preventDefault();
+    console.log("Email input onBlur", e);
+    setIsEmailTouched(true);
   };
 
   return (
@@ -76,7 +136,7 @@ function Pay() {
       <form id="pay-form" onSubmit={handleSubmit}>
         <div className={pay_form_group}>
           <label className={pay_label} htmlFor="name" id="name-label">
-            Name
+            Full Name
           </label>
           <input
             className={pay_input}
@@ -86,7 +146,7 @@ function Pay() {
             onChange={nameValidation}
             onBlur={nameValidationOnBlur}
             name="name"
-            placeholder="Enter your name"
+            placeholder="Enter your full name"
           />
 
           {isNameError && isNameTouched ? <span className={pay_form_error}>Wrong name</span> : null}
@@ -108,7 +168,7 @@ function Pay() {
           />
 
           {isAddressError && isAddressTouched ? (
-            <span className={pay_form_error}>Wrong name</span>
+            <span className={pay_form_error}>Wrong address</span>
           ) : null}
         </div>
 
@@ -121,11 +181,14 @@ function Pay() {
             id="phone"
             type="text"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={phoneValidation}
+            onBlur={phoneValidationOnBlur}
             name="phone"
             placeholder="Enter your phone"
           />
-          <span className={pay_form_error}>Wrong phone number</span>
+          {isPhoneError && isPhoneTouched ? (
+            <span className={pay_form_error}>Wrong phone number</span>
+          ) : null}
         </div>
 
         <div className={pay_form_group}>
@@ -137,18 +200,22 @@ function Pay() {
             id="email"
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={emailValidation}
+            onBlur={emailValidationOnBlur}
             name="email"
             placeholder="Enter your email"
           />
-          <span className={pay_form_error}>Wrong email</span>
+          {isEmailError && isEmailTouched ? (
+            <span className={pay_form_error}>Wrong email</span>
+          ) : null}
         </div>
-        <button className={pay_btn} type="submit">
-          Pay now
-        </button>
-        {/* <button className={pay_btn} type="submit" disabled>
+
+        {/* <button className={pay_btn} type="submit">
           Pay now
         </button> */}
+        <button className={pay_btn} type="submit" disabled>
+          Pay now
+        </button>
       </form>
     </div>
     // </div>

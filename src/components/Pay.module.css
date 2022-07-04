@@ -49,6 +49,10 @@
   border: none;
   border-radius: 4px;
 }
+.pay_btn[disabled] {
+  background-color: #ced4da;
+  cursor: auto;
+}
 
 .pay_form_error {
   font-size: 1.6rem;
