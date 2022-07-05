@@ -3,8 +3,16 @@ import { React, useState, useEffect } from "react";
 import styles from "./Pay.module.css";
 
 function Pay() {
-  const { pay, pay_container, pay_form_group, pay_label, pay_input, pay_btn, pay_form_error } =
-    styles;
+  const {
+    pay,
+    pay_container,
+    pay_form_group,
+    pay_label,
+    pay_input,
+    pay_input_error,
+    pay_btn,
+    pay_form_error,
+  } = styles;
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -153,7 +161,7 @@ function Pay() {
             Full Name
           </label>
           <input
-            className={pay_input}
+            className={isNameError && isNameTouched ? pay_input_error : pay_input}
             id="name"
             type="text"
             value={name}
@@ -172,7 +180,7 @@ function Pay() {
             Address
           </label>
           <input
-            className={pay_input}
+            className={isAddressError && isAddressTouched ? pay_input_error : pay_input}
             id="address"
             type="text"
             value={address}
@@ -193,7 +201,7 @@ function Pay() {
             Phone
           </label>
           <input
-            className={pay_input}
+            className={isPhoneError && isPhoneTouched ? pay_input_error : pay_input}
             id="phone"
             type="text"
             value={phone}
@@ -213,7 +221,7 @@ function Pay() {
             Email
           </label>
           <input
-            className={pay_input}
+            className={isEmailError && isEmailTouched ? pay_input_error : pay_input}
             id="email"
             type="text"
             value={email}
@@ -228,10 +236,6 @@ function Pay() {
           ) : null}
         </div>
 
-        {/* <button className={pay_btn} type="submit">
-          Pay now
-        </button> */}
-
         <button
           className={pay_btn}
           type="submit"
@@ -239,7 +243,8 @@ function Pay() {
             (isNameError && isNameTouched) ||
             (isAddressError && isAddressTouched) ||
             (isPhoneError && isPhoneTouched) ||
-            (isEmailError && isEmailTouched)
+            (isEmailError && isEmailTouched) ||
+            (!isNameTouched && !isAddressTouched && !isPhoneTouched && !isEmailTouched)
               ? true
               : false
           }
