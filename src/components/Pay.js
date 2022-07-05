@@ -23,7 +23,7 @@ function Pay() {
   const [isEmailError, setIsEmailError] = useState(false);
   const [isEmailTouched, setIsEmailTouched] = useState(false);
 
-  // console.log({ name, adress, phone, email });
+  // console.log({ name, address, phone, email });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,27 +31,32 @@ function Pay() {
   };
 
   //////////////////////////////// Name Validation
-  console.log({ isNameError, isNameTouched });
+  // console.log({ isNameError, isNameTouched });
 
   const nameValidation = (e) => {
     e.preventDefault();
-    console.log(e);
 
     setName(e.target.value);
 
     const nameCheck = /^[a-zA-Z0-9\-–.]{2,25}\s[a-zA-Z0-9\-–.]{2,25}$/;
     const isNameValid = nameCheck.test(e.target.value);
 
-    if (!isNameValid && isNameTouched) {
+    if (!isNameValid) {
       setIsNameError(true);
-    } else setIsNameError(false);
+    } else {
+      setIsNameError(false);
+    }
+    // console.log("----------", { isNameValid, console_NameInputValue: e.target.value });
+  };
 
-    console.log("----------", { isNameValid, console_NameInputValue: e.target.value });
+  const nameValidationOnClick = (e) => {
+    if (name === "") {
+      setIsNameError(true);
+    }
   };
 
   const nameValidationOnBlur = (e) => {
     e.preventDefault();
-    console.log("Name input onBlur", e);
     setIsNameTouched(true);
   };
 
@@ -60,23 +65,26 @@ function Pay() {
 
   const addressValidation = (e) => {
     e.preventDefault();
-    console.log(e);
 
     setAddress(e.target.value);
 
     const addressCheck = /^[a-zA-Z0-9\-–_.\s]{2,150}$/;
     const isAddressValid = addressCheck.test(e.target.value);
 
-    if (!isAddressValid && isAddressTouched) {
+    if (!isAddressValid) {
       setIsAddressError(true);
     } else setIsAddressError(false);
+    // console.log("----------", { isAddressValid, console_AddressInputValue: e.target.value });
+  };
 
-    console.log("----------", { isAddressValid, console_AddressInputValue: e.target.value });
+  const addressValidationOnClick = (e) => {
+    if (address === "") {
+      setIsAddressError(true);
+    }
   };
 
   const addressValidationOnBlur = (e) => {
     e.preventDefault();
-    console.log("Address input onBlur", e);
     setIsAddressTouched(true);
   };
 
@@ -85,23 +93,26 @@ function Pay() {
 
   const phoneValidation = (e) => {
     e.preventDefault();
-    console.log(e);
 
     setPhone(e.target.value);
 
     const phoneCheck = /^[+0-9\-\s]{5,12}$/;
     const isPhoneValid = phoneCheck.test(e.target.value);
 
-    if (!isPhoneValid && isPhoneTouched) {
+    if (!isPhoneValid) {
       setIsPhoneError(true);
     } else setIsPhoneError(false);
+    // console.log("----------", { isPhoneValid, console_PhoneInputValue: e.target.value });
+  };
 
-    console.log("----------", { isPhoneValid, console_PhoneInputValue: e.target.value });
+  const phoneValidationOnClick = (e) => {
+    if (phone === "") {
+      setIsPhoneError(true);
+    }
   };
 
   const phoneValidationOnBlur = (e) => {
     e.preventDefault();
-    console.log("Phone input onBlur", e);
     setIsPhoneTouched(true);
   };
 
@@ -110,23 +121,26 @@ function Pay() {
 
   const emailValidation = (e) => {
     e.preventDefault();
-    console.log(e);
 
     setEmail(e.target.value);
 
     const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
     const isEmailValid = emailCheck.test(e.target.value);
 
-    if (!isEmailValid && isEmailTouched) {
+    if (!isEmailValid) {
       setIsEmailError(true);
     } else setIsEmailError(false);
+    // console.log("----------", { isEmailValid, console_EmailInputValue: e.target.value });
+  };
 
-    console.log("----------", { isEmailValid, console_EmailInputValue: e.target.value });
+  const emailValidationOnClick = (e) => {
+    if (email === "") {
+      setIsEmailError(true);
+    }
   };
 
   const emailValidationOnBlur = (e) => {
     e.preventDefault();
-    console.log("Email input onBlur", e);
     setIsEmailTouched(true);
   };
 
@@ -145,6 +159,7 @@ function Pay() {
             value={name}
             onChange={nameValidation}
             onBlur={nameValidationOnBlur}
+            onClick={nameValidationOnClick}
             name="name"
             placeholder="Enter your full name"
           />
@@ -163,6 +178,7 @@ function Pay() {
             value={address}
             onChange={addressValidation}
             onBlur={addressValidationOnBlur}
+            onClick={addressValidationOnClick}
             name="address"
             placeholder="Enter your address"
           />
@@ -183,6 +199,7 @@ function Pay() {
             value={phone}
             onChange={phoneValidation}
             onBlur={phoneValidationOnBlur}
+            onClick={phoneValidationOnClick}
             name="phone"
             placeholder="Enter your phone"
           />
@@ -202,6 +219,7 @@ function Pay() {
             value={email}
             onChange={emailValidation}
             onBlur={emailValidationOnBlur}
+            onClick={emailValidationOnClick}
             name="email"
             placeholder="Enter your email"
           />
@@ -213,7 +231,19 @@ function Pay() {
         {/* <button className={pay_btn} type="submit">
           Pay now
         </button> */}
-        <button className={pay_btn} type="submit" disabled>
+
+        <button
+          className={pay_btn}
+          type="submit"
+          disabled={
+            (isNameError && isNameTouched) ||
+            (isAddressError && isAddressTouched) ||
+            (isPhoneError && isPhoneTouched) ||
+            (isEmailError && isEmailTouched)
+              ? true
+              : false
+          }
+        >
           Pay now
         </button>
       </form>
