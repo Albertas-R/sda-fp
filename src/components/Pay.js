@@ -12,6 +12,8 @@ function Pay() {
     pay_input_error,
     pay_btn,
     pay_form_error,
+    fa_form_icon,
+    fa_form_icon_error,
   } = styles;
 
   const [name, setName] = useState("");
@@ -36,6 +38,12 @@ function Pay() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ name, address, phone, email });
+
+    localStorage.clear();
+    setName("");
+    setAddress("");
+    setPhone("");
+    setEmail("");
   };
 
   //////////////////////////////// Name Validation
@@ -171,7 +179,11 @@ function Pay() {
             name="name"
             placeholder="Enter your full name"
           />
-
+          {/* https://fontawesome.com/v4/icons/ */}
+          <i
+            className={`fa fa-user ${isNameError && isNameTouched ? fa_form_icon_error : fa_form_icon}`}
+            aria-hidden="true"
+          ></i>
           {isNameError && isNameTouched ? <span className={pay_form_error}>Wrong name</span> : null}
         </div>
 
@@ -190,7 +202,12 @@ function Pay() {
             name="address"
             placeholder="Enter your address"
           />
-
+          <i
+            className={`fa fa-map-marker ${
+              isAddressError && isAddressTouched ? fa_form_icon_error : fa_form_icon
+            }`}
+            aria-hidden="true"
+          ></i>
           {isAddressError && isAddressTouched ? (
             <span className={pay_form_error}>Wrong address</span>
           ) : null}
@@ -211,6 +228,10 @@ function Pay() {
             name="phone"
             placeholder="Enter your phone"
           />
+          <i
+            className={`fa fa-phone ${isPhoneError && isPhoneTouched ? fa_form_icon_error : fa_form_icon}`}
+            aria-hidden="true"
+          ></i>
           {isPhoneError && isPhoneTouched ? (
             <span className={pay_form_error}>Wrong phone number</span>
           ) : null}
@@ -231,6 +252,10 @@ function Pay() {
             name="email"
             placeholder="Enter your email"
           />
+          <i
+            className={`fa fa-envelope ${isEmailError && isEmailTouched ? fa_form_icon_error : fa_form_icon}`}
+            aria-hidden="true"
+          ></i>
           {isEmailError && isEmailTouched ? (
             <span className={pay_form_error}>Wrong email</span>
           ) : null}

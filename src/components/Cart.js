@@ -101,7 +101,7 @@ function Cart({ products }) {
   const cartBtnPayEl =
     totalPrice > 0 ? (
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
-        Pay now
+        Proceed to Checkout
       </button>
     ) : null;
 

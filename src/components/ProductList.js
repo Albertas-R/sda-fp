@@ -32,6 +32,7 @@ function ProductList({ products }) {
     sort_by_title_container,
     sort_by_price_container,
     product_search,
+    fa_search_icon,
     product_filter_btn,
   } = styles;
 
@@ -86,6 +87,7 @@ function ProductList({ products }) {
           onChange={(e) => setSearchField(e.target.value)}
           className={product_search}
         />
+        <i className={`fa fa-search ${fa_search_icon}`} aria-hidden="true"></i>
         <div className={product_filter_container}>
           <div className={sort_by_title_container}>
             <button className={product_filter_btn} onClick={sortAscending}>
