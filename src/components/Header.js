@@ -66,10 +66,13 @@ function Header() {
               >
                 {/* <CartIconMd /> */}
                 <CartOutlineIconMd />
-                Cart{" "}
-                <span>
-                  ({totalItems} {totalItems > 1 ? "items" : "item"})
-                </span>
+                Cart
+                {totalItems > 0 ? (
+                  <span>
+                    {" "}
+                    ({totalItems} {totalItems > 1 ? "items" : "item"})
+                  </span>
+                ) : null}
               </NavLink>
             </li>
           </ul>
