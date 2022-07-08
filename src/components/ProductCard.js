@@ -16,7 +16,7 @@ function ProductCard({ product }) {
     product_btn,
   } = styles;
 
-  const handleClick = (product) => {
+  const handleAddToCart = (product) => {
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     const checkItem = cartItems.find((item) => item.id === product.id);
@@ -45,7 +45,7 @@ function ProductCard({ product }) {
             <p>{product.title}</p>
           </Link>
           <p className={product_price}>{product.price} €</p>
-          <button className={product_btn} type="button" onClick={() => handleClick(product)}>
+          <button className={product_btn} type="button" onClick={() => handleAddToCart(product)}>
             Add to Cart
           </button>
         </div>

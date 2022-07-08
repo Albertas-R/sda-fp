@@ -85,6 +85,8 @@
   color: var(--text);
   transition: all 0.3s;
 
+  white-space: pre;
+
   /* border: 1px solid grey; */
 }
 
@@ -97,4 +99,9 @@
   font-weight: 800;
   text-decoration: underline;
   color: var(--hover);
+}
+
+.main_nav_link span,
+.main_nav_link.active span {
+  font-weight: 400;
 }

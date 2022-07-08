@@ -30,7 +30,7 @@ function Cart({ products }) {
   };
 
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-  // console.log("cartItems ---------------", cartItems);
+  console.log("cartItems ---------------", cartItems);
 
   const productsInCart = cartItems.reduce((acc, currentCartItem) => {
     const checkItem = products.find((product) => product.id === currentCartItem.id);
