@@ -47,6 +47,16 @@ function Cart({ products }) {
     return acc + currentItem.price * currentItem.amount;
   }, 0);
 
+  // const [itemsInCart, setItemsInCart] = useState(0);
+
+  const totalItems = productsInCart.reduce((acc, currentItem) => {
+    return acc + currentItem.amount;
+  }, 0);
+  console.log("totalItems ---------------", { totalItems, productsInCart });
+
+  // setItemsInCart(totalItems);
+  // console.log("itemsInCart ---------------", itemsInCart);
+
   const handleCartAmountAdd = (productId) => {
     setCartItems((prevState) => {
       // Copy of previous state
@@ -101,7 +111,10 @@ function Cart({ products }) {
   const cartBtnPayEl =
     totalPrice > 0 ? (
       <button className={cart_btn_pay} type="button" onClick={handleClick}>
-        Proceed to Checkout
+        Proceed to Checkout{" "}
+        <span>
+          ({totalItems} {totalItems > 1 ? "items" : "item"})
+        </span>
       </button>
     ) : null;
 
