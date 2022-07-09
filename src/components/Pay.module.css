@@ -17,7 +17,7 @@
 .pay_form {
 }
 
-.pay_form_group {
+.pay_form_item {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;

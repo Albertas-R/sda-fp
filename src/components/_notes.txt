@@ -1,3 +1,17 @@
+----------------------------------------------------------------
+
+2022-07-09
+
+// const name = "irasykBlogaVardaCia";
+
+// const allowerCharactersPattern = /[a-z ]+/gi;
+
+// const hasInvalidCharacters = name.replace(allowerCharactersPattern, "");
+
+// const isValid = !hasInvalidCharacters;
+
+// console.log(isValid);
+
 
 ----------------------------------------------------------------
 

@@ -1,12 +1,13 @@
 import { React, useState, useEffect } from "react";
 
+import { PhoneIconFa } from "./Icons";
+
 import styles from "./Pay.module.css";
 
 function Pay() {
   const {
     pay,
-    pay_container,
-    pay_form_group,
+    pay_form_item,
     pay_label,
     pay_input,
     pay_input_error,
@@ -17,20 +18,19 @@ function Pay() {
   } = styles;
 
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [isNameError, setIsNameError] = useState(false);
+  const [nameError, setNameError] = useState("");
   const [isNameTouched, setIsNameTouched] = useState(false);
 
-  const [isAddressError, setIsAddressError] = useState(false);
+  const [address, setAddress] = useState("");
+  const [addressError, setAddressError] = useState("");
   const [isAddressTouched, setIsAddressTouched] = useState(false);
 
-  const [isPhoneError, setIsPhoneError] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [isPhoneTouched, setIsPhoneTouched] = useState(false);
 
-  const [isEmailError, setIsEmailError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [isEmailTouched, setIsEmailTouched] = useState(false);
 
   // console.log({ name, address, phone, email });
@@ -54,24 +54,27 @@ function Pay() {
 
     setName(e.target.value);
 
-    const nameCheck = /^[a-zA-Z0-9\-–.]{2,25}\s[a-zA-Z0-9\-–.]{2,25}$/;
-    const isNameValid = nameCheck.test(e.target.value);
+    const twoWordCheck = /^[a-zA-Z\-–.]{2,25}\s+[a-zA-Z\-–.]{2,25}$/;
+    const allowedCharacters = /[a-zA-Z\-–.\s]+/g;
+    const invalidCharactersInName = e.target.value.replace(allowedCharacters, "");
+    const hasSpacesInBeginAndEnd = /^\s+|\s+$/;
 
-    if (!isNameValid) {
-      setIsNameError(true);
-    } else {
-      setIsNameError(false);
+    if (invalidCharactersInName) {
+      setNameError("Please enter full name (it can only contain letters, hyphens and period).");
+      return;
     }
-    // console.log("----------", { isNameValid, console_NameInputValue: e.target.value });
+    if (hasSpacesInBeginAndEnd.test(e.target.value)) {
+      setNameError("There can't be spaces at the begining and end.");
+      return;
+    }
+    if (!twoWordCheck.test(e.target.value)) {
+      setNameError("Please enter first and second name.");
+      return;
+    }
+    setNameError("");
   };
 
-  const nameValidationOnClick = (e) => {
-    if (name === "") {
-      setIsNameError(true);
-    }
-  };
-
-  const nameValidationOnBlur = (e) => {
+  const nameHandleOnBlur = (e) => {
     e.preventDefault();
     setIsNameTouched(true);
   };
@@ -88,15 +91,10 @@ function Pay() {
     const isAddressValid = addressCheck.test(e.target.value);
 
     if (!isAddressValid) {
-      setIsAddressError(true);
-    } else setIsAddressError(false);
-    // console.log("----------", { isAddressValid, console_AddressInputValue: e.target.value });
-  };
-
-  const addressValidationOnClick = (e) => {
-    if (address === "") {
-      setIsAddressError(true);
+      setAddressError("Please enter address.");
+      return;
     }
+    setAddressError("");
   };
 
   const addressValidationOnBlur = (e) => {
@@ -112,19 +110,25 @@ function Pay() {
 
     setPhone(e.target.value);
 
-    const phoneCheck = /^[+0-9\-\s]{5,12}$/;
+    const phoneCheck = /^\+?[0-9\-\s]{7,24}$/;
     const isPhoneValid = phoneCheck.test(e.target.value);
+    const validCharacter = /[0-9+\-\s]/g;
+    const multipleSpaces = /\s\s/;
+    const invalidCharactersInPhone = e.target.value.replace(validCharacter, "");
 
-    if (!isPhoneValid) {
-      setIsPhoneError(true);
-    } else setIsPhoneError(false);
-    // console.log("----------", { isPhoneValid, console_PhoneInputValue: e.target.value });
-  };
-
-  const phoneValidationOnClick = (e) => {
-    if (phone === "") {
-      setIsPhoneError(true);
+    if (invalidCharactersInPhone) {
+      setPhoneError("Phone number must contain numbers and spaces.");
+      return;
     }
+    if (!isPhoneValid) {
+      setPhoneError("Please enter phone number.");
+      return;
+    }
+    if (multipleSpaces.test(e.target.value)) {
+      setPhoneError("There can't be multiple spaces.");
+      return;
+    }
+    setPhoneError("");
   };
 
   const phoneValidationOnBlur = (e) => {
@@ -142,17 +146,18 @@ function Pay() {
 
     const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
     const isEmailValid = emailCheck.test(e.target.value);
+    const hasSpaces = /\s+/g;
+
+    if (hasSpaces.test(e.target.value)) {
+      setEmailError("There can't be any space.");
+      return;
+    }
 
     if (!isEmailValid) {
-      setIsEmailError(true);
-    } else setIsEmailError(false);
-    // console.log("----------", { isEmailValid, console_EmailInputValue: e.target.value });
-  };
-
-  const emailValidationOnClick = (e) => {
-    if (email === "") {
-      setIsEmailError(true);
+      setEmailError("Please enter email (example: mail@mail.com).");
+      return;
     }
+    setEmailError("");
   };
 
   const emailValidationOnBlur = (e) => {
@@ -162,102 +167,108 @@ function Pay() {
 
   return (
     <div className={pay}>
-      {/* <div className={pay_container}> */}
       <form id="pay-form" onSubmit={handleSubmit}>
-        <div className={pay_form_group}>
+        <div className={pay_form_item}>
           <label className={pay_label} htmlFor="name" id="name-label">
             Full Name
           </label>
           <input
-            className={isNameError && isNameTouched ? pay_input_error : pay_input}
+            className={nameError && isNameTouched ? pay_input_error : pay_input}
             id="name"
             type="text"
             value={name}
             onChange={nameValidation}
-            onBlur={nameValidationOnBlur}
-            onClick={nameValidationOnClick}
+            onBlur={nameHandleOnBlur}
+            onClick={nameValidation}
             name="name"
             placeholder="Enter your full name"
           />
           {/* https://fontawesome.com/v4/icons/ */}
           <i
-            className={`fa fa-user ${isNameError && isNameTouched ? fa_form_icon_error : fa_form_icon}`}
+            className={`fa fa-user ${
+              nameError && isNameTouched ? fa_form_icon_error : fa_form_icon
+            }`}
             aria-hidden="true"
           ></i>
-          {isNameError && isNameTouched ? <span className={pay_form_error}>Wrong name</span> : null}
+          {nameError && isNameTouched && <span className={pay_form_error}>{nameError}</span>}
         </div>
 
-        <div className={pay_form_group}>
+        <div className={pay_form_item}>
           <label className={pay_label} htmlFor="address" id="adress-label">
             Address
           </label>
           <input
-            className={isAddressError && isAddressTouched ? pay_input_error : pay_input}
+            className={addressError && isAddressTouched ? pay_input_error : pay_input}
             id="address"
             type="text"
             value={address}
             onChange={addressValidation}
             onBlur={addressValidationOnBlur}
-            onClick={addressValidationOnClick}
+            onClick={addressValidation}
             name="address"
             placeholder="Enter your address"
           />
           <i
             className={`fa fa-map-marker ${
-              isAddressError && isAddressTouched ? fa_form_icon_error : fa_form_icon
+              addressError && isAddressTouched ? fa_form_icon_error : fa_form_icon
             }`}
             aria-hidden="true"
           ></i>
-          {isAddressError && isAddressTouched ? (
-            <span className={pay_form_error}>Wrong address</span>
+          {addressError && isAddressTouched ? (
+            <span className={pay_form_error}>{addressError}</span>
           ) : null}
         </div>
 
-        <div className={pay_form_group}>
+        <div className={pay_form_item}>
           <label className={pay_label} htmlFor="phone" id="phone-label">
             Phone
           </label>
           <input
-            className={isPhoneError && isPhoneTouched ? pay_input_error : pay_input}
+            className={phoneError && isPhoneTouched ? pay_input_error : pay_input}
             id="phone"
             type="text"
             value={phone}
             onChange={phoneValidation}
             onBlur={phoneValidationOnBlur}
-            onClick={phoneValidationOnClick}
+            onClick={phoneValidation}
             name="phone"
             placeholder="Enter your phone"
           />
+          {/* <PhoneIconFa/> */}
           <i
-            className={`fa fa-phone ${isPhoneError && isPhoneTouched ? fa_form_icon_error : fa_form_icon}`}
+            className={`fa fa-phone ${
+              phoneError && isPhoneTouched ? fa_form_icon_error : fa_form_icon
+            }`}
             aria-hidden="true"
           ></i>
-          {isPhoneError && isPhoneTouched ? (
-            <span className={pay_form_error}>Wrong phone number</span>
+          {phoneError && isPhoneTouched ? (
+            <span className={pay_form_error}>{phoneError}</span>
           ) : null}
         </div>
 
-        <div className={pay_form_group}>
+        <div className={pay_form_item}>
           <label className={pay_label} htmlFor="email" id="email-label">
             Email
           </label>
           <input
-            className={isEmailError && isEmailTouched ? pay_input_error : pay_input}
+            className={emailError && isEmailTouched ? pay_input_error : pay_input}
             id="email"
             type="text"
             value={email}
             onChange={emailValidation}
             onBlur={emailValidationOnBlur}
-            onClick={emailValidationOnClick}
+            onClick={emailValidation}
             name="email"
             placeholder="Enter your email"
           />
           <i
-            className={`fa fa-envelope ${isEmailError && isEmailTouched ? fa_form_icon_error : fa_form_icon}`}
+            className={`fa fa-envelope ${
+              emailError && isEmailTouched ? fa_form_icon_error : fa_form_icon
+            }`}
             aria-hidden="true"
           ></i>
-          {isEmailError && isEmailTouched ? (
-            <span className={pay_form_error}>Wrong email</span>
+          {emailError && isEmailTouched ? (
+            <span className={pay_form_error}>{emailError}</span>
           ) : null}
         </div>
 
@@ -265,11 +276,14 @@ function Pay() {
           className={pay_btn}
           type="submit"
           disabled={
-            (isNameError && isNameTouched) ||
-            (isAddressError && isAddressTouched) ||
-            (isPhoneError && isPhoneTouched) ||
-            (isEmailError && isEmailTouched) ||
-            (!isNameTouched && !isAddressTouched && !isPhoneTouched && !isEmailTouched)
+            (nameError && isNameTouched) ||
+            (addressError && isAddressTouched) ||
+            (phoneError && isPhoneTouched) ||
+            (emailError && isEmailTouched) ||
+            !isNameTouched ||
+            !isAddressTouched ||
+            !isPhoneTouched ||
+            !isEmailTouched
               ? true
               : false
           }
@@ -278,7 +292,6 @@ function Pay() {
         </button>
       </form>
     </div>
-    // </div>
   );
 }
 

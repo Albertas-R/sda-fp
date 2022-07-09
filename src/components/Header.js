@@ -9,12 +9,12 @@ function Header() {
   const { header, header_container, logo, main_nav, main_nav_list, main_nav_link, active } = styles;
 
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-  console.log("----- cartItems from Header", cartItems);
+  // console.log("----- cartItems from Header", cartItems);
 
   const totalItems = cartItems.reduce((acc, currentItem) => {
     return acc + currentItem.amount;
   }, 0);
-  console.log("----- totalItems from Header", { totalItems });
+  // console.log("----- totalItems from Header", { totalItems });
 
   return (
     <header className={header}>
