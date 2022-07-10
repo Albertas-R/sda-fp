@@ -112,9 +112,9 @@ function Pay() {
 
     const phoneCheck = /^\+?[0-9\-\s]{7,24}$/;
     const isPhoneValid = phoneCheck.test(e.target.value);
-    const validCharacter = /[0-9+\-\s]/g;
+    const validCharacters = /[0-9+\-\s]/g;
     const multipleSpaces = /\s\s/;
-    const invalidCharactersInPhone = e.target.value.replace(validCharacter, "");
+    const invalidCharactersInPhone = e.target.value.replace(validCharacters, "");
 
     if (invalidCharactersInPhone) {
       setPhoneError("Phone number must contain numbers and spaces.");
