@@ -58,7 +58,7 @@ function ProductList({ products }) {
   if (sort === sortOptions.PRICE_DESCENDING) {
     filteredProducts.sort((a, b) => b.price - a.price);
   }
-  console.log({ filteredProducts });
+  // console.log({ filteredProducts });
 
   const sortAscending = () => {
     setSort(sortOptions.ASCENDING);
@@ -112,17 +112,9 @@ function ProductList({ products }) {
       </div>
 
       <ul className={product_list} id="product_list">
-        {/* {products.map((product) => {
-          return <ProductCard product={product} key={product.id} />;
-        })} */}
-
         {filteredProducts.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}
-
-        {/* {sort.map((product) => {
-          return <ProductCard product={product} key={product.id} />;
-        })} */}
       </ul>
     </>
   );

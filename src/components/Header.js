@@ -1,4 +1,5 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
+import { CartItemsContext } from "./CartItemsContext";
 import { Link, NavLink } from "react-router-dom";
 
 import { CartIconMd, CartOutlineIconMd, FingerprintIconMd } from "./Icons";
@@ -8,10 +9,10 @@ import styles from "./Header.module.css";
 function Header() {
   const { header, header_container, logo, main_nav, main_nav_list, main_nav_link, active } = styles;
 
-  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-  // console.log("----- cartItems from Header", cartItems);
+  const context = useContext(CartItemsContext);
+  // console.log("----- context from Header", { context });
 
-  const totalItems = cartItems.reduce((acc, currentItem) => {
+  const totalItems = context.cartItems.reduce((acc, currentItem) => {
     return acc + currentItem.amount;
   }, 0);
   // console.log("----- totalItems from Header", { totalItems });

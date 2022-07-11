@@ -1,4 +1,5 @@
-import { React, useState, useEffect } from "react";
+import { React, useContext } from "react";
+import { CartItemsContext } from "./CartItemsContext";
 import { Link, useNavigate } from "react-router-dom";
 
 import { PlusIconHi, MinusIconHi } from "./Icons";
@@ -29,10 +30,10 @@ function Cart({ products }) {
     navigate("/pay");
   };
 
-  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-  console.log("cartItems ---------------", cartItems);
+  const context = useContext(CartItemsContext);
+  // console.log("----- context from Cart", { context });
 
-  const productsInCart = cartItems.reduce((acc, currentCartItem) => {
+  const productsInCart = context.cartItems.reduce((acc, currentCartItem) => {
     const checkItem = products.find((product) => product.id === currentCartItem.id);
 
     if (checkItem) {
@@ -41,62 +42,24 @@ function Cart({ products }) {
     }
     return acc;
   }, []);
-  // console.log("productsInCart ----------", productsInCart);
+  // console.log("productsInCart ----------", { productsInCart });
 
   const totalPrice = productsInCart.reduce((acc, currentItem) => {
     return acc + currentItem.price * currentItem.amount;
   }, 0);
-
-  // const [itemsInCart, setItemsInCart] = useState(0);
+  // console.log("totalPrice ----------", { totalPrice });
 
   const totalItems = productsInCart.reduce((acc, currentItem) => {
     return acc + currentItem.amount;
   }, 0);
-  console.log("totalItems ---------------", { totalItems, productsInCart });
+  // console.log("totalItems ----------", { totalItems });
 
-  // setItemsInCart(totalItems);
-  // console.log("itemsInCart ---------------", itemsInCart);
-
-  const handleCartAmountAdd = (productId) => {
-    setCartItems((prevState) => {
-      // Copy of previous state
-      // const newState = JSON.parse(JSON.stringify(prevState));
-      const newState = prevState.map((item) => ({ ...item }));
-
-      const checkItem = newState.find((item) => item.id === productId);
-
-      checkItem.amount++;
-
-      console.log("btn ADD", { newState, checkItem });
-
-      localStorage.setItem("cartItems", JSON.stringify(newState));
-
-      return newState;
-    });
+  const handleCartAmountAdd = (id) => {
+    context.addCartItems(id);
   };
 
-  const handleCartAmountMinus = (productId) => {
-    setCartItems((prevState) => {
-      // Copy of previous state
-      // const newState = JSON.parse(JSON.stringify(prevState));
-      const newState = prevState.map((item) => ({ ...item }));
-
-      const checkItemIndex = newState.findIndex((item) => item.id === productId);
-
-      const checkItem = newState[checkItemIndex];
-
-      if (checkItem.amount === 1) {
-        newState.splice(checkItemIndex, 1);
-      } else {
-        checkItem.amount--;
-      }
-
-      console.log("btn MINUS", { newState, checkItemIndex, checkItem });
-
-      localStorage.setItem("cartItems", JSON.stringify(newState));
-
-      return newState;
-    });
+  const handleCartAmountMinus = (id) => {
+    context.removeCartItems(id);
   };
 
   const totalPriceEl =
@@ -139,8 +102,6 @@ function Cart({ products }) {
                   </p>
                 </div>
                 <div className={cart_amount_btns}>
-                  {/* <button className={cart_amount_add}>+</button>
-                  <button className={cart_amount_min}>-</button> */}
                   <button
                     className={cart_amount_add}
                     onClick={() => handleCartAmountAdd(product.id)}

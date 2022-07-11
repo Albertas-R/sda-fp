@@ -1,5 +1,6 @@
-import React from "react";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartItemsContext } from "./CartItemsContext";
 
 import styles from "./ProductList.module.css";
 
@@ -16,20 +17,11 @@ function ProductCard({ product }) {
     product_btn,
   } = styles;
 
-  const handleAddToCart = (product) => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const context = useContext(CartItemsContext);
+  // console.log("----- context from ProductCard", { context });
 
-    const checkItem = cartItems.find((item) => item.id === product.id);
-
-    if (checkItem) {
-      checkItem.amount++;
-    } else {
-      cartItems.push({ id: product.id, amount: 1 });
-    }
-
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    console.log("----- cartItems from ProductCard", cartItems);
+  const handleAddToCart = (id) => {
+    context.addCartItems(id);
   };
 
   return (
@@ -45,7 +37,7 @@ function ProductCard({ product }) {
             <p>{product.title}</p>
           </Link>
           <p className={product_price}>{product.price} €</p>
-          <button className={product_btn} type="button" onClick={() => handleAddToCart(product)}>
+          <button className={product_btn} type="button" onClick={() => handleAddToCart(product.id)}>
             Add to Cart
           </button>
         </div>

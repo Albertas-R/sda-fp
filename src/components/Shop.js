@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Hero from "./Hero";
+// import Hero from "./Hero";
 import ProductList from "./ProductList";
 import Product from "./Product";
 import Cart from "./Cart";

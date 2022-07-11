@@ -1,5 +1,6 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { React, useContext } from "react";
+import { CartItemsContext } from "./CartItemsContext";
+import { useParams } from "react-router-dom";
 
 import styles from "./Product.module.css";
 
@@ -16,30 +17,35 @@ function Product({ products }) {
     product_btn,
   } = styles;
 
-  let navigate = useNavigate();
-
   let { productId } = useParams();
   console.log(productId);
 
+  const context = useContext(CartItemsContext);
+  // console.log("----- context from Product", { context });
+
   const currentProduct = products.find((product) => {
+    console.log({ product });
+
     if (Number(productId) === product.id) return true;
     return false;
   });
-  console.log(currentProduct);
+  console.log({ currentProduct });
 
-  const handleClick = (currentProduct) => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const handleClick = (id) => {
+    context.addCartItems(id);
 
-    const checkItem = cartItems.find((item) => item.id === currentProduct.id);
+    // const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-    if (checkItem) {
-      checkItem.amount++;
-    } else {
-      cartItems.push({ id: currentProduct.id, amount: 1 });
-    }
+    // const checkItem = cartItems.find((item) => item.id === currentProduct.id);
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    console.log(cartItems);
+    // if (checkItem) {
+    //   checkItem.amount++;
+    // } else {
+    //   cartItems.push({ id: currentProduct.id, amount: 1 });
+    // }
+
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // console.log(cartItems);
   };
 
   return (
@@ -52,7 +58,11 @@ function Product({ products }) {
         <p className={product_description}>{currentProduct.description}</p>
         <div className={price_container}>
           <p className={product_price}>{currentProduct.price} €</p>
-          <button className={product_btn} type="button" onClick={() => handleClick(currentProduct)}>
+          <button
+            className={product_btn}
+            type="button"
+            onClick={() => handleClick(currentProduct.id)}
+          >
             Add to Cart
           </button>
         </div>
