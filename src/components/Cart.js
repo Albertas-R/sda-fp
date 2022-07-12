@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import React, { useContext } from "react";
 import { CartItemsContext } from "./CartItemsContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import { PlusIconHi, MinusIconHi } from "./Icons";
 import styles from "./Cart.module.css";
 
 function Cart({ products }) {
+  console.log("******************** Rendering Cart Component ********************");
+
   const {
     cart,
     cart_list,
@@ -132,4 +134,4 @@ function Cart({ products }) {
   );
 }
 
-export default Cart;
+export default React.memo(Cart);

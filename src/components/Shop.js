@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // import Hero from "./Hero";
@@ -11,6 +11,8 @@ import NotFound from "./NotFound";
 import styles from "./Shop.module.css";
 
 function Shop() {
+  console.log("******************** Rendering Shop Component ********************");
+
   const { shop, shop_container } = styles;
 
   useEffect(() => {
@@ -41,4 +43,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default React.memo(Shop);

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 import Hero from "./Hero";
 import ProductCard from "./ProductCard";
@@ -23,6 +23,8 @@ const sortOptions = {
 };
 
 function ProductList({ products }) {
+  console.log("******************** Rendering ProductList Component ********************");
+
   // console.log({ products });
 
   const {
@@ -120,4 +122,4 @@ function ProductList({ products }) {
   );
 }
 
-export default ProductList;
+export default React.memo(ProductList);

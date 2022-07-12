@@ -1,10 +1,12 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // import { PhoneIconFaPay, PhoneIconFaPayError } from "./Icons";
 
 import styles from "./Pay.module.css";
 
 function Pay() {
+  console.log("******************** Rendering Pay Component ********************");
+
   const {
     pay,
     pay_form_item,
@@ -297,4 +299,4 @@ function Pay() {
   );
 }
 
-export default Pay;
+export default React.memo(Pay);

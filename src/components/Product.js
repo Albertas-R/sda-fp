@@ -1,10 +1,12 @@
-import { React, useContext } from "react";
+import React, { useContext } from "react";
 import { CartItemsContext } from "./CartItemsContext";
 import { useParams } from "react-router-dom";
 
 import styles from "./Product.module.css";
 
 function Product({ products }) {
+  console.log("******************** Rendering Product Component ********************");
+
   console.log({ products });
 
   const {
@@ -58,4 +60,4 @@ function Product({ products }) {
   );
 }
 
-export default Product;
+export default React.memo(Product);

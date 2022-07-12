@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import React, { useContext } from "react";
 import { CartItemsContext } from "./CartItemsContext";
 import { Link, NavLink } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import { CartIconMd, CartOutlineIconMd, FingerprintIconMd } from "./Icons";
 import styles from "./Header.module.css";
 
 function Header() {
+  console.log("******************** Rendering Header Component ********************");
+
   const { header, header_container, logo, main_nav, main_nav_list, main_nav_link, active } = styles;
 
   const context = useContext(CartItemsContext);
@@ -83,4 +85,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);
