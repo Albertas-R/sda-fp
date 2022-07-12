@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import { PhoneIconFa } from "./Icons";
+import { PhoneIconFaPay, PhoneIconFaPayError } from "./Icons";
 
 import styles from "./Pay.module.css";
 
@@ -234,13 +234,15 @@ function Pay() {
             name="phone"
             placeholder="Enter your phone"
           />
-          {/* <PhoneIconFa/> */}
-          <i
+
+          {/* <i
             className={`fa fa-phone ${
               phoneError && isPhoneTouched ? fa_form_icon_error : fa_form_icon
             }`}
             aria-hidden="true"
-          ></i>
+          ></i> */}
+          {phoneError && isPhoneTouched ? <PhoneIconFaPayError /> : <PhoneIconFaPay />}
+
           {phoneError && isPhoneTouched ? (
             <span className={pay_form_error}>{phoneError}</span>
           ) : null}

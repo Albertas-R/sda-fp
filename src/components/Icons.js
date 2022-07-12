@@ -104,6 +104,43 @@ export function PhoneIconFa() {
   return <FaPhoneAlt style={style} />;
 }
 
+// .fa_form_icon {
+//   font-size: 1.8rem;
+//   color: var(--text2);
+//   position: absolute;
+//   left: 1rem;
+//   top: calc(1.8rem + 0.8rem + 1rem);
+// }
+// .fa_form_icon_error {
+//   font-size: 1.8rem;
+//   color: red;
+//   position: absolute;
+//   left: 1rem;
+//   top: calc(1.8rem + 0.8rem + 1rem);
+// }
+export function PhoneIconFaPay() {
+  const style = {
+    fontSize: "1.8rem",
+    color: "var(--text2)",
+    position: "absolute",
+    left: "1rem",
+    top: "calc(1.8rem + 0.8rem + 1rem)",
+  };
+
+  return <FaPhoneAlt style={style} />;
+}
+export function PhoneIconFaPayError() {
+  const style = {
+    fontSize: "1.8rem",
+    color: "red",
+    position: "absolute",
+    left: "1rem",
+    top: "calc(1.8rem + 0.8rem + 1rem)",
+  };
+
+  return <FaPhoneAlt style={style} />;
+}
+
 export function EmailIconFa() {
   const style = {
     // fontSize: "2rem",
