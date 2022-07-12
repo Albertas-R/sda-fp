@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import { PhoneIconFaPay, PhoneIconFaPayError } from "./Icons";
+// import { PhoneIconFaPay, PhoneIconFaPayError } from "./Icons";
 
 import styles from "./Pay.module.css";
 
