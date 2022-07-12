@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import styles from "./Product.module.css";
 
 function Product({ products }) {
+  console.log({ products });
+
   const {
     product,
     image_container,
@@ -18,34 +20,19 @@ function Product({ products }) {
   } = styles;
 
   let { productId } = useParams();
-  console.log(productId);
+  console.log("productId ---->>>>", { productId });
 
   const context = useContext(CartItemsContext);
   // console.log("----- context from Product", { context });
 
   const currentProduct = products.find((product) => {
-    console.log({ product });
-
     if (Number(productId) === product.id) return true;
     return false;
   });
-  console.log({ currentProduct });
+  console.log("currentProduct ---------- from Product", { currentProduct });
 
-  const handleClick = (id) => {
+  const handleAddToCart = (id) => {
     context.addCartItems(id);
-
-    // const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-    // const checkItem = cartItems.find((item) => item.id === currentProduct.id);
-
-    // if (checkItem) {
-    //   checkItem.amount++;
-    // } else {
-    //   cartItems.push({ id: currentProduct.id, amount: 1 });
-    // }
-
-    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    // console.log(cartItems);
   };
 
   return (
@@ -61,7 +48,7 @@ function Product({ products }) {
           <button
             className={product_btn}
             type="button"
-            onClick={() => handleClick(currentProduct.id)}
+            onClick={() => handleAddToCart(currentProduct.id)}
           >
             Add to Cart
           </button>
