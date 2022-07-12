@@ -235,13 +235,13 @@ function Pay() {
             placeholder="Enter your phone"
           />
 
-          {/* <i
+          <i
             className={`fa fa-phone ${
               phoneError && isPhoneTouched ? fa_form_icon_error : fa_form_icon
             }`}
             aria-hidden="true"
-          ></i> */}
-          {phoneError && isPhoneTouched ? <PhoneIconFaPayError /> : <PhoneIconFaPay />}
+          ></i>
+          {/* {phoneError && isPhoneTouched ? <PhoneIconFaPayError /> : <PhoneIconFaPay />} */}
 
           {phoneError && isPhoneTouched ? (
             <span className={pay_form_error}>{phoneError}</span>
