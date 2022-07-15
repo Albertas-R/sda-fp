@@ -17,10 +17,6 @@ function ProductCard({ product }) {
 
   const context = useContext(CartItemsContext);
 
-  const handleAddToCart = (id) => {
-    context.addCartItems(id);
-  };
-
   return (
     <>
       <li className={product_card}>
@@ -34,7 +30,11 @@ function ProductCard({ product }) {
             <p>{product.title}</p>
           </Link>
           <p className={product_price}>{product.price} €</p>
-          <button className={product_btn} type="button" onClick={() => handleAddToCart(product.id)}>
+          <button
+            className={product_btn}
+            type="button"
+            onClick={() => context.updateCartItems(product.id)}
+          >
             Add to Cart
           </button>
         </div>

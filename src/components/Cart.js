@@ -51,13 +51,13 @@ function Cart({ products }) {
     return acc + currentItem.amount;
   }, 0);
 
-  const handleCartAmountAdd = (id) => {
-    context.addCartItems(id);
-  };
+  // const handleCartAmountAdd = (id) => {
+  //   context.addCartItems(id);
+  // };
 
-  const handleCartAmountMinus = (id) => {
-    context.removeCartItems(id);
-  };
+  // const handleCartAmountMinus = (id) => {
+  //   context.removeCartItems(id);
+  // };
 
   const totalPriceEl =
     totalPrice > 0 ? (
