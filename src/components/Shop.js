@@ -16,6 +16,7 @@ function Shop() {
   const { shop, shop_container } = styles;
 
   useEffect(() => {
+    // fetch("https://dummyjson.com/products?limit=10")
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((products) => setProducts(products.products))
@@ -44,3 +45,4 @@ function Shop() {
 }
 
 export default React.memo(Shop);
+// export default Shop;

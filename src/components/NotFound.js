@@ -10,7 +10,7 @@ function NotFound() {
   return (
     <div className={not_found}>
       <div className={not_found_container}>
-        <p className={not_found_txt}>Page not found</p>
+        <p className={not_found_txt}>Page not found.</p>
       </div>
     </div>
   );

@@ -35,6 +35,7 @@ function Cart({ products }) {
   const context = useContext(CartItemsContext);
   // console.log("----- context from Cart", { context });
 
+  // potencialiai galima cia panaudoti useMemo
   const productsInCart = context.cartItems.reduce((acc, currentCartItem) => {
     const checkItem = products.find((product) => product.id === currentCartItem.id);
 
@@ -106,13 +107,15 @@ function Cart({ products }) {
                 <div className={cart_amount_btns}>
                   <button
                     className={cart_amount_add}
-                    onClick={() => handleCartAmountAdd(product.id)}
+                    // onClick={() => handleCartAmountAdd(product.id)}
+                    onClick={() => context.updateCartItems(product.id)}
                   >
                     <PlusIconHi />
                   </button>
                   <button
                     className={cart_amount_min}
-                    onClick={() => handleCartAmountMinus(product.id)}
+                    // onClick={() => handleCartAmountMinus(product.id)}
+                    onClick={() => context.updateCartItems(product.id, true)}
                   >
                     <MinusIconHi />
                   </button>

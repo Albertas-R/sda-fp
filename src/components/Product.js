@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { CartItemsContext } from "./CartItemsContext";
 import { useParams } from "react-router-dom";
 
+import { Circles } from "react-loader-spinner";
+
 import styles from "./Product.module.css";
 
 function Product({ products }) {
@@ -33,9 +35,14 @@ function Product({ products }) {
   });
   console.log("currentProduct ---------- from Product", { currentProduct });
 
-  const handleAddToCart = (id) => {
-    context.addCartItems(id);
-  };
+  // const handleAddToCart = (id) => {
+  //   context.addCartItems(id);
+  // };
+
+  if (!currentProduct) {
+    // return null;
+    return <Circles height="100" width="100" color="grey" ariaLabel="loading" />;
+  }
 
   return (
     <div className={product}>
@@ -50,7 +57,7 @@ function Product({ products }) {
           <button
             className={product_btn}
             type="button"
-            onClick={() => handleAddToCart(currentProduct.id)}
+            onClick={() => context.updateCartItems(currentProduct.id)}
           >
             Add to Cart
           </button>

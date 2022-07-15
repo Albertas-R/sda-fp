@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 import Hero from "./Hero";
 import ProductCard from "./ProductCard";
@@ -44,8 +44,13 @@ function ProductList({ products }) {
   const [sort, setSort] = useState(sortOptions.OFF);
   // console.log({ sort });
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchField.toLowerCase())
+  // const filteredProducts = products.filter((product) =>
+  //   product.title.toLowerCase().includes(searchField.toLowerCase())
+  // );
+  const filteredProducts = useMemo(
+    () =>
+      products.filter((product) => product.title.toLowerCase().includes(searchField.toLowerCase())),
+    [products, searchField]
   );
 
   if (sort === sortOptions.ASCENDING) {
