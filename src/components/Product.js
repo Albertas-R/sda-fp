@@ -2,15 +2,11 @@ import React, { useContext } from "react";
 import { CartItemsContext } from "./CartItemsContext";
 import { useParams } from "react-router-dom";
 
-import { Circles } from "react-loader-spinner";
+import FadeLoader from "react-spinners/FadeLoader";
 
 import styles from "./Product.module.css";
 
 function Product({ products }) {
-  console.log("******************** Rendering Product Component ********************");
-
-  console.log({ products });
-
   const {
     product,
     image_container,
@@ -24,24 +20,21 @@ function Product({ products }) {
   } = styles;
 
   let { productId } = useParams();
-  console.log("productId ---->>>>", { productId });
 
   const context = useContext(CartItemsContext);
-  // console.log("----- context from Product", { context });
 
   const currentProduct = products.find((product) => {
     if (Number(productId) === product.id) return true;
     return false;
   });
-  console.log("currentProduct ---------- from Product", { currentProduct });
 
-  // const handleAddToCart = (id) => {
-  //   context.addCartItems(id);
-  // };
+  const overrideFadeLoader = {
+    display: "block",
+    margin: "4.8rem auto 0 auto",
+  };
 
   if (!currentProduct) {
-    // return null;
-    return <Circles height="100" width="100" color="grey" ariaLabel="loading" />;
+    return <FadeLoader color={"#555"} cssOverride={overrideFadeLoader} />;
   }
 
   return (

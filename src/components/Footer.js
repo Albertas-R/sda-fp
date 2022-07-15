@@ -6,8 +6,6 @@ import { PhoneIconFa, EmailIconFa } from "./Icons";
 import styles from "./Footer.module.css";
 
 function Footer() {
-  console.log("******************** Rendering Footer Component ********************");
-
   const { contacts, contacts_container, contacts_mob, contacts_email } = styles;
 
   return (

@@ -23,10 +23,6 @@ const sortOptions = {
 };
 
 function ProductList({ products }) {
-  console.log("******************** Rendering ProductList Component ********************");
-
-  // console.log({ products });
-
   const {
     product_list,
     product_search_filter_container,
@@ -39,10 +35,8 @@ function ProductList({ products }) {
   } = styles;
 
   const [searchField, setSearchField] = useState("");
-  // console.log(searchField);
 
   const [sort, setSort] = useState(sortOptions.OFF);
-  // console.log({ sort });
 
   // const filteredProducts = products.filter((product) =>
   //   product.title.toLowerCase().includes(searchField.toLowerCase())
@@ -65,7 +59,6 @@ function ProductList({ products }) {
   if (sort === sortOptions.PRICE_DESCENDING) {
     filteredProducts.sort((a, b) => b.price - a.price);
   }
-  // console.log({ filteredProducts });
 
   const sortAscending = () => {
     setSort(sortOptions.ASCENDING);

@@ -5,10 +5,6 @@ import { CartItemsContext } from "./CartItemsContext";
 import styles from "./ProductList.module.css";
 
 function ProductCard({ product }) {
-  console.log("******************** Rendering ProductCard Component ********************");
-
-  // console.log(product);
-
   const {
     product_img_box,
     product_info_box,
@@ -20,7 +16,6 @@ function ProductCard({ product }) {
   } = styles;
 
   const context = useContext(CartItemsContext);
-  // console.log("----- context from ProductCard", { context });
 
   const handleAddToCart = (id) => {
     context.addCartItems(id);

@@ -7,8 +7,6 @@ import { PlusIconHi, MinusIconHi } from "./Icons";
 import styles from "./Cart.module.css";
 
 function Cart({ products }) {
-  console.log("******************** Rendering Cart Component ********************");
-
   const {
     cart,
     cart_list,
@@ -33,7 +31,6 @@ function Cart({ products }) {
   };
 
   const context = useContext(CartItemsContext);
-  // console.log("----- context from Cart", { context });
 
   // potencialiai galima cia panaudoti useMemo
   const productsInCart = context.cartItems.reduce((acc, currentCartItem) => {
@@ -45,17 +42,14 @@ function Cart({ products }) {
     }
     return acc;
   }, []);
-  // console.log("productsInCart ----------", { productsInCart });
 
   const totalPrice = productsInCart.reduce((acc, currentItem) => {
     return acc + currentItem.price * currentItem.amount;
   }, 0);
-  // console.log("totalPrice ----------", { totalPrice });
 
   const totalItems = productsInCart.reduce((acc, currentItem) => {
     return acc + currentItem.amount;
   }, 0);
-  // console.log("totalItems ----------", { totalItems });
 
   const handleCartAmountAdd = (id) => {
     context.addCartItems(id);
@@ -88,7 +82,6 @@ function Cart({ products }) {
     <div className={cart}>
       <ul className={cart_list}>
         {productsInCart.map((product) => {
-          // console.log(product);
           return (
             <li className={cart_list_li} key={product.id}>
               <Link to={`/product/${product.id}`}>
@@ -125,13 +118,7 @@ function Cart({ products }) {
           );
         })}
       </ul>
-      {/* <div className={cart_total_price}>
-        Total Price: <strong>{totalPrice} €</strong>
-      </div> */}
       <>{totalPriceEl}</>
-      {/* <button className={cart_btn_pay} type="button" onClick={handleClick}>
-        Pay now
-      </button> */}
       <>{cartBtnPayEl}</>
     </div>
   );

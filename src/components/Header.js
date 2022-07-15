@@ -7,17 +7,13 @@ import { CartIconMd, CartOutlineIconMd, FingerprintIconMd } from "./Icons";
 import styles from "./Header.module.css";
 
 function Header() {
-  console.log("******************** Rendering Header Component ********************");
-
   const { header, header_container, logo, main_nav, main_nav_list, main_nav_link, active } = styles;
 
   const context = useContext(CartItemsContext);
-  // console.log("----- context from Header", { context });
 
   const totalItems = context.cartItems.reduce((acc, currentItem) => {
     return acc + currentItem.amount;
   }, 0);
-  // console.log("----- totalItems from Header", { totalItems });
 
   return (
     <header className={header}>
@@ -33,7 +29,6 @@ function Header() {
               <NavLink
                 to="/"
                 className={(isActive) => {
-                  // console.log({ isActive });
                   return isActive.isActive ? `${main_nav_link} ${active}` : main_nav_link;
                 }}
               >

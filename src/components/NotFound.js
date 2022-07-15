@@ -3,8 +3,6 @@ import React from "react";
 import styles from "./NotFound.module.css";
 
 function NotFound() {
-  console.log("******************** Rendering NotFound Component ********************");
-
   const { not_found, not_found_container, not_found_txt } = styles;
 
   return (

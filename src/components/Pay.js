@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // import { PhoneIconFaPay, PhoneIconFaPayError } from "./Icons";
 
 import styles from "./Pay.module.css";
 
 function Pay() {
-  console.log("******************** Rendering Pay Component ********************");
-
   const {
     pay,
     pay_form_item,
@@ -35,8 +33,6 @@ function Pay() {
   const [emailError, setEmailError] = useState("");
   const [isEmailTouched, setIsEmailTouched] = useState(false);
 
-  // console.log({ name, address, phone, email });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ name, address, phone, email });
@@ -49,8 +45,6 @@ function Pay() {
   };
 
   //////////////////////////////// Name Validation
-  // console.log({ isNameError, isNameTouched });
-
   const nameValidation = (e) => {
     e.preventDefault();
 
@@ -82,8 +76,6 @@ function Pay() {
   };
 
   //////////////////////////////// Address Validation
-  // console.log({ isAddressError, isAddressTouched });
-
   const addressValidation = (e) => {
     e.preventDefault();
 
@@ -105,8 +97,6 @@ function Pay() {
   };
 
   //////////////////////////////// Phone Validation
-  // console.log({ isPhoneError, isPhoneTouched });
-
   const phoneValidation = (e) => {
     e.preventDefault();
 
@@ -139,8 +129,6 @@ function Pay() {
   };
 
   //////////////////////////////// Email Validation
-  // console.log({ isEmailError, isEmailTouched });
-
   const emailValidation = (e) => {
     e.preventDefault();
 

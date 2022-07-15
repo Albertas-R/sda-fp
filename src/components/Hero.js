@@ -5,8 +5,6 @@ import { HeroIconGi } from "./Icons";
 import styles from "./Hero.module.css";
 
 function Hero() {
-  console.log("******************** Rendering Hero Component ********************");
-
   const { hero, hero_container, hero_txt } = styles;
 
   return (

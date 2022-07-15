@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import Hero from "./Hero";
 import ProductList from "./ProductList";
 import Product from "./Product";
 import Cart from "./Cart";
@@ -11,12 +10,9 @@ import NotFound from "./NotFound";
 import styles from "./Shop.module.css";
 
 function Shop() {
-  console.log("******************** Rendering Shop Component ********************");
-
   const { shop, shop_container } = styles;
 
   useEffect(() => {
-    // fetch("https://dummyjson.com/products?limit=10")
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((products) => setProducts(products.products))
@@ -24,16 +20,12 @@ function Shop() {
   }, []);
 
   const [products, setProducts] = useState([]);
-  // console.log({ products });
 
   return (
     <section className={shop} id="shop">
       <div className={shop_container}>
         <Routes>
-          <Route path="/" element={<ProductList products={products} />}>
-            {/* <Route index element={<Hero />} /> */}
-          </Route>
-          {/* <Route path="product" element={<Product products={products} />} /> */}
+          <Route path="/" element={<ProductList products={products} />}></Route>
           <Route path="product/:productId" element={<Product products={products} />} />
           <Route path="cart" element={<Cart products={products} />} />
           <Route path="pay" element={<Pay />} />
@@ -45,4 +37,3 @@ function Shop() {
 }
 
 export default React.memo(Shop);
-// export default Shop;
