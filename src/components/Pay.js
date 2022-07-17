@@ -50,8 +50,8 @@ function Pay() {
 
     setName(e.target.value);
 
-    const twoWordCheck = /^[a-zA-Z\-–.]{2,25}\s+[a-zA-Z\-–.]{2,25}$/;
-    const allowedCharacters = /[a-zA-Z\-–.\s]+/g;
+    const twoWordCheck = /^[a-ząčęėįšųūž\-–.]{2,25}\s+[a-ząčęėįšųūž\-–.]{2,25}$/i;
+    const allowedCharacters = /[a-ząčęėįšųūž\-–.\s]+/gi;
     const invalidCharactersInName = e.target.value.replace(allowedCharacters, "");
     const hasSpacesInBeginAndEnd = /^\s+|\s+$/;
 
@@ -81,7 +81,7 @@ function Pay() {
 
     setAddress(e.target.value);
 
-    const addressCheck = /^[a-zA-Z0-9\-–_.\s]{2,150}$/;
+    const addressCheck = /^[a-ząčęėįšųūž0-9\-–_.\s]{2,150}$/i;
     const isAddressValid = addressCheck.test(e.target.value);
 
     if (!isAddressValid) {
