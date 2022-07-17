@@ -54,7 +54,7 @@ function App() {
     });
   };
 
-  const updateCartItems = (id, shoudDelete = false) => {
+  const updateCartItems = (id, shoudRemove = false) => {
     setCartItems((prevState) => {
       // Copy of previous state
       // const newState = JSON.parse(JSON.stringify(prevState));
@@ -64,7 +64,7 @@ function App() {
 
       const checkItem = newState[checkItemIndex];
 
-      if (shoudDelete) {
+      if (shoudRemove) {
         if (checkItem.amount === 1) {
           newState.splice(checkItemIndex, 1);
         } else {
